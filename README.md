@@ -8,12 +8,12 @@ The most up-to-date pdf can be found [here](https://gitlab.dominik-schwaiger.ch/
 
 ### Nix
 
-+ `nix develop`
-+ `make`
+1. `nix develop`
+1. `make`
 
 ### Not Nix
 
-+ Install typst, make
-+ Run `make`
+1. Install typst, make
+1. Run `make`
 
 
