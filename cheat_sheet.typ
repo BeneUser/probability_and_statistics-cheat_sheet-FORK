@@ -57,15 +57,18 @@
 
 #underline()[= Probability and Statistics - Cheat Sheet]
 
-#columns(2)[
-  #def[Definitions, Lemmas, Propositions, etc.]
-  #note[Notes, Examples]
+#columns(
+  2,
+  text(size: 0.5em)[
+    #def[Definitions, Lemmas, Propositions, etc.]
+    #note[Notes, Examples]
 
-  #colbreak()
+    #colbreak()
 
-  #form[Formulas]
-  #not_relevant[Not Relevant]
-]
+    #form[Formulas]
+    #not_relevant[Not Relevant]
+  ],
+)
 
 == Probability space
 
@@ -152,21 +155,42 @@
 #def[
   #columns(2)[
     + $emptyset in F$
-    + $A_1, A_2, ..., in F => sect^infinity_(i=1)A_i in F$
+    + $A_1, A_2, ..., in F => inter^infinity_(i=1)A_i in F$
     #colbreak()
     3. $A,B in F => A union B in F$
-    + $A,B in F => A sect B in F$
+    + $A,B in F => A inter B in F$
   ]
   #line(length: 100%, stroke: gray)
   #columns(2)[
-   5. $PP[emptyset] = 0$ 
-   #colbreak()
-   6. $PP[A^C] = 1 - PP[A]$
+    5. $PP[emptyset] = 0$
+    #colbreak()
+    6. $PP[A^C] = 1 - PP[A]$
   ]
-  7. $PP[A union B] = PP[A] + PP[B] - PP[A sect B]$
-  + (*additivity*) $A_1,...,A_k$ _pairwise disjoint_, $PP[A_1 union ... union A_k]=PP[A_1] + ... + PP[A_k]$
-  + (*Monotonicity*) $A subset B => PP[A] <= PP[B]$
-  + (*Union bound*) $A_1, A_2, ...$ a sequence $=> PP[union^infinity_(i=1)A_i] <= sum^infinity_(i=1)PP[A_i]$
-  + (*Increasing Limit*) $(A_n)$ increasing ($A_n subset A_(n+1)$) $=> lim_(n->infinity)PP[A_n]=PP[union^infinity_(n=1)A_n]$
-  + (*Decreasing Limit*) $(B_n)$ decreasing ($B_n supset B_(n+1)$) $=> lim_(n->infinity)PP[B_n]=PP[sect^infinity_(n=1)B_n]$
+  7. $PP[A union B] = PP[A] + PP[B] - PP[A inter B]$
+  + $A_1,...,A_k$ _pairwise disjoint_, $PP[A_1 union ... union A_k]=PP[A_1] + ... + PP[A_k]$ (*additivity*)
+  + $A subset B => PP[A] <= PP[B]$ (*Monotonicity*)
+  + $A_1, A_2, ...$ a sequence $=> PP[union^infinity_(i=1)A_i] <= sum^infinity_(i=1)PP[A_i]$ (*Union bound*)
+  + $(A_n)$ increasing ($A_n subset A_(n+1)$) $=> lim_(n->infinity)PP[A_n]=PP[union^infinity_(n=1)A_n]$ (*Increasing Limit*)
+  + $(B_n)$ decreasing ($B_n supset B_(n+1)$) $=> lim_(n->infinity)PP[B_n]=PP[inter^infinity_(n=1)B_n]$ (*Decreasing Limit*)
+]
+
+== Conditional probabilities
+
+#def[
+  #align(center)[
+    conditional probability of *$A$ given $B$*
+    $ PP[A | B] = (PP[A inter B]) / (PP[B]) $
+
+  ]
+
+  #note[$ PP[B|B] = 1 $]
+]
+
+=== Properties
+
+#def[
+  + $PP[.|B]$ is a *probability measure* on $Omega$
+  #align(center)[$B_1, ..., B_n$ a *partition*#footnote([$Omega = B_1 union ... union B_n$ and pairwise disjoint]) of $Omega$ with $PP[B_i] > 0$]
+  + $forall A in F: PP[A] = sum^n_(i=1)PP[A|B_i]PP[B_i]$ (*Formula of total probability*)
+  + $PP[A>0] => PP[B_i | A ] = (PP[A|B_i]PP[B_i])/(sum^n_(j=1)PP[A|B_j]PP[B_j])$ (*Bayes formula*)
 ]
