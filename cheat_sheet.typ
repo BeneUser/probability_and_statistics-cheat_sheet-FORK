@@ -40,6 +40,7 @@
 #set columns(gutter: 12pt)
 #set enum(numbering: "1a1.")
 #set underline(offset: 1pt)
+#set line(stroke: gray, length: 100%)
 
 // BOXES
 
@@ -160,7 +161,7 @@
     3. $A,B in F => A union B in F$
     + $A,B in F => A inter B in F$
   ]
-  #line(length: 100%, stroke: gray)
+  #line()
   #columns(2)[
     5. $PP[emptyset] = 0$
     #colbreak()
@@ -192,5 +193,37 @@
   + $PP[.|B]$ is a *probability measure* on $Omega$
   #align(center)[$B_1, ..., B_n$ a *partition*#footnote([$Omega = B_1 union ... union B_n$ and pairwise disjoint]) of $Omega$ with $PP[B_i] > 0$]
   + $forall A in F: PP[A] = sum^n_(i=1)PP[A|B_i]PP[B_i]$ (*Formula of total probability*)
-  + $PP[A>0] => PP[B_i | A ] = (PP[A|B_i]PP[B_i])/(sum^n_(j=1)PP[A|B_j]PP[B_j])$ (*Bayes formula*)
+  + $PP[A>0] => PP[B_i | A ] = (PP[A|B_i]PP[B_i]) / (sum^n_(j=1)PP[A|B_j]PP[B_j])$ (*Bayes formula*)
+]
+
+== Independence
+
+#def[
+  #align(center)[$A$ and $B$ *independent* $<=> PP[A inter B] = PP[A]PP[B]$]
+
+  #line()
+
+  #align(center)[If $PP[A],PP[B] > 0$ then the following are equivalent:]
+  #align(center)[+ $PP[A inter B] = PP[A]PP[B]$]
+  #columns(2)[
+    2. $PP[A | B]=PP[A]$
+    #colbreak()
+    3. $PP[B|A]=PP[B]$
+  ]
+
+  #line()
+  #align(center)[$(A_i)_(i in I)$ *independent* $<=>$ $ forall J subset I "finite" space PP[inter_(j in J)A_j] = product_(j in J) $]
+
+  #note[
+    #align(center)[
+      $A,B,C$ *independent* $<=>$
+      #columns(2)[
+        + $PP[A inter B] = PP[A]PP[B]$
+        + $PP[A inter C] = PP[A]PP[C]$
+        #colbreak()
+        3. $PP[B inter C] = PP[B]PP[C]$
+      ]
+      4. $PP[A inter B inter C] = PP[A]PP[B]PP[C]$
+    ]
+  ]
 ]
