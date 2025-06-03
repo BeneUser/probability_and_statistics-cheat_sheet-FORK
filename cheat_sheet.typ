@@ -227,3 +227,41 @@
     ]
   ]
 ]
+
+== Random variables
+
+#def[
+  #align(center)[
+    $X$ *random variable* $<=>$ $X$ a map $X: Omega -> RR$ and $forall a in RR: {omega in Omega: X(omega) <= a} in F$
+  ]
+]
+
+=== Indicator Function
+
+#def[
+  #align(center)[
+    *indicator function* $bb(1)_A$ of $A$:
+
+    $ forall omega in Omega: bb(1)_A(omega) = cases(0 "if" omega in.not A, 1 "if" in A) $
+  ]
+]
+
+== Distribution function
+
+#def[
+  #align(center)[
+    *distribution function* of $X$: $ F_X: RR -> [0,1], space forall a in RR: F_X (a) = PP[X <= a] $
+  ]
+]
+
+=== Properties
+
+#def[
+  #columns(2)[
+    + $PP[a < X <= b] = F(b) - F(a)$
+    + $F$ is non-decreasing
+    #colbreak()
+    3. $F$ is right continuous
+    + $lim_(a -> - infinity) F(a) = 0$ and $lim_(a -> infinity) F(a) = 1$
+  ]
+]
