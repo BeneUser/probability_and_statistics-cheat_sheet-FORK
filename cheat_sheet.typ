@@ -265,3 +265,29 @@
     + $lim_(a -> - infinity) F(a) = 0$ and $lim_(a -> infinity) F(a) = 1$
   ]
 ]
+
+=== Independence
+
+#def[
+  #align(center)[$X_1, ..., X_n$ *independent* $<=> forall x_1, ..., x_n in RR:$]
+  $ PP[X_1 <= x_1, ..., X_n <= x_n] = PP[X_1 <= x_1] dots.c PP[X_n <= x_n] $
+]
+
+#not_relevant[
+  If we have a set of independent random variables, and we make disjoint groups of such
+  random variables, then these groups are also independent form each other. This idea is
+  formalized by the following proposition:
+
+  #text(stroke: red, align(center)[TODO])
+]
+
+=== Sequence
+
+#def[
+  #align(center)[
+    *infinite sequence* $X_1, X_2, ...$ is:
+  ]
+  - *independent* if $X_1, ..., X_n$ independent for every $n$
+  - *independent and identically distributed (iid)* if independent and same distribution function ($forall i,j space F_(X_i) = F_(X_j)$)
+  )
+]
