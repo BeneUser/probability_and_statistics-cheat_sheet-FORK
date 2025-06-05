@@ -340,6 +340,97 @@
   $ forall x in RR: F_X(x) = attach(sum, tr: y<=x, br: y in W)p(x) $
 ]
 
+=== Distributions
+
+#note[
+  #align(center)[see at the end for the distribution table]
+]
+
+==== Bernoulli
+
+#def[
+  $ "Bin"(1,p) = "Ber"(p) $
+]
+
+#def[
+  $ X ~ "Bin"(m,p), space Y ~ "Bin"(n,p), space X,Y "independent" \ => X + Y ~ "Bin"(m+n, p) $
+]
+
+==== Geometric
+
+#def[
+  #align(center)[$X_1, X_2, ...$ a sequence of infinite, independent Bernoulli, then:]
+  #align(center)[$T:= min{n >= 1: X_n = 1}$ geometric with parameter $p$]
+]
+
+#def[
+  $ forall n >= 0, k >=1 space.quad PP[T >= n + k | T > n] = PP[T >= k] $
+]
+
+== Continuous random variables
+
+#def[
+  $
+    X: Omega -> RR #strong("continuous") <=> \ "distribution" F_X (a) = integral^a_(- infinity) f(x) d x space.quad "for all" a in RR \ "for some non-negative" #strong("density") f: RR -> RR_+
+  $
+]
+
+#def[
+  $ integral^(+infinity)_(-infinity) f(x) d x = 1 $
+]
+
+#def[
+  $ F_X (x) = integral^x_(-infinity) f(y) d y $
+]
+
+#def[
+  $
+    F_X "continuous, piecewise" C^1 (F_X "is" C_1 "on all" (x_i, x_(i+1))) \ => forall x in (x_i, x_(i+1)) space.quad f(x) = F'_X(x) \ "with arbitrary" x_1, ..., x_(n-1)
+  $
+]
+
+=== Distributions
+
+#note[
+  #align(center)[see at the end for the distribution table]
+]
+
+==== Uniform
+
+#def[
+  $ PP[X in [c, c+lambda]] = l / (b-a) $
+]
+
+==== Exponential
+
+#def[
+  $ forall t space.quad PP[T > t] = e^(- lambda t) $
+]
+
+#def[
+  $ forall t, s >= 0 space.quad PP[T > t + s | T > t] = PP[T > s] $
+]
+
+#def[
+  $ PP[T > t + s | T > t] = e^(- lambda s) $
+]
+
+==== Normal
+
+#def[
+  $
+    X_1, ..., X_n "independent, parameters:" (m_1, sigma^2_1), ..., (m_n, sigma^2_n) \ => Z = m_0 + lambda_1 X_1 + ... + lambda_n X_n "normal, parameters:" \ m = m_0 + lambda_1 m_1 + ... + lambda_n m_n "and" sigma^2 = lambda_1^2 sigma^2_1 + ... + lambda_n^2 sigma^2_n
+  $
+]
+
+#def[
+  $ X ~ cal(N)(0,1) #strong("standard normal") \ => Z = m + sigma dot.c X "normal, parameters:" m "and" sigma^2 $
+]
+
+#def[
+  $ PP[| X - m | >= 3 sigma] <= 0.0027 $
+]
+
 #pagebreak()
 
 = Formula Collection
