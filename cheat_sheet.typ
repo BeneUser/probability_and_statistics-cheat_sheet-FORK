@@ -437,10 +437,13 @@
   $ EE[X] = integral^infinity_0 (1 - F_X(x)) d x $
 
   #note[
-    + $X: Omega -> RR_+$
-    + can be finite or infinite
-    + $EE[X] >= 0 space.quad (X > 0)$
-    + $X=0 "a.s." => EE[X] = 0$
+    #columns(2)[
+      + $X: Omega -> RR_+$
+      + can be finite or infinite
+      #colbreak()
+      3. $EE[X] >= 0 space.quad (X > 0)$
+      + $X=0 "a.s." => EE[X] = 0$
+    ]
   ]
 ]
 
@@ -464,7 +467,9 @@
 == Continuous
 
 #def[
-  $ EE[X] = integral^infinity_(-infinity) x dot.c f(x) d x space.quad "and" space.quad EE[phi.alt (X)] = integral^infinity_(-infinity) phi.alt (x) f(x) d x $
+  $
+    EE[X] = integral^infinity_(-infinity) x dot.c f(x) d x space.quad "and" space.quad EE[phi.alt (X)] = integral^infinity_(-infinity) phi.alt (x) f(x) d x
+  $
 ]
 
 == Calculus
