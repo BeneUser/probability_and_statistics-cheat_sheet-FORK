@@ -242,7 +242,7 @@
   #align(center)[
     *indicator function* $bb(1)_A$ of $A$:
 
-    $ forall omega in Omega: bb(1)_A(omega) = cases(0 "if" omega in.not A, 1 "if" in A) $
+    $ forall omega in Omega: bb(1)_A(omega) = cases(0 &"if" &omega in.not A, 1 &"if" &omega in A) $
   ]
 ]
 
@@ -289,3 +289,210 @@
 ]
 
 == Bernoulli Variable
+
+#def[
+  $ X ~ "Ber"(p) <=> PP[X=0] = 1 - p space "and" space PP[X=1] = p $
+]
+
+== Uniform Random Variable
+
+#def[
+  $ U ~ cal(U)([a,b]) <=> F_U = cases(0 space.quad &x < a, x space.quad &a <= x <= b, 1 space.quad &x > b) $
+]
+
+== Inverse Transform Sampling
+
+#def[
+  $ U ~ cal(U)([0,1]), F: RR -> [0,1] "a distribution function" \ => X = F^(-1)(U) "has distribution" F_X = F $
+
+  #note[
+    This also applies to a *sequence of functions* and independent random variables.
+  ]
+]
+
+= Discrete and Continuous Random Variables
+
+#def[
+  $ PP[X=a] = F(a) - F(a-) $
+]
+
+#def[
+  $ A "occurs" #strong("almost surely (a.s.)") <=> PP[A] = 1 $
+]
+
+== Discrete Random Variables
+
+#def[
+  $ X: Omega -> RR #strong("discrete") \ <=> exists W subset RR "finite or countable": X in W "a.s." $
+]
+
+=== Distribution
+
+#def[
+  $ (p(x))_(x in W) #strong("distribution of") X <=> forall x in W: p(x) := PP[X=x] $
+]
+
+#def[
+  $ sum_(x in W) p(x) = 1 $
+]
+
+#def[
+  $ forall x in RR: F_X(x) = attach(sum, tr: y<=x, br: y in W)p(x) $
+]
+
+#pagebreak()
+
+= Formula Collection
+
+#page(columns: 1)[
+  == Distributions
+  #show table.cell.where(x: 0): strong
+  #show table.cell.where(y: 0): strong
+
+  #table(
+    fill: (x, y) => if y == 0 { luma(80%) } else { },
+    columns: (auto, auto, auto, auto, auto, auto, auto, 1fr),
+    align: (
+      left + horizon,
+      left + horizon,
+      left + horizon,
+      center + horizon,
+      center + horizon,
+      center + horizon,
+      center + horizon,
+      left + horizon,
+    ),
+    inset: (x: 5pt, y: 7pt),
+    table.header(
+      [Distribution],
+      [Notation],
+      [Parameters],
+      [$EE[X]$],
+      [$"Var"(X)$],
+      [$p_X(t) "/" f_X(t)$],
+      [$F_X(t)$],
+      [Use Case],
+    ),
+
+    table.cell(colspan: 8, align: center + horizon)[Discrete Distributions],
+
+    [Equal Distribution],
+    [unknown],
+    [$n$: Event Count \ ($x_i$: Events)],
+    [$1 / n sum^n_(i=1)x_i$],
+    [$1 / n sum^n_(i=1) x^2_i - 1 / (n^2) (sum^n_(i=1) x_i)^2$],
+    [$1 / n$],
+    [$(|{k:x_k <= t}|) / n$],
+    [uniform discrete, equal chance, coin toss, dice],
+
+    [Bernoulli],
+    [$"Ber"(p)$],
+    [$p:$ Success Probability],
+    [$p$],
+    [$p(1-p)$],
+    [$p^t (1-p)^(1-t)$],
+    [$1-p "for" 0 <= t < 1$],
+    [single trial, success/failure, coin flip],
+
+    [Binomial],
+    [$"Bin"(n,p)$],
+    [$n$: Event Count \ $p$: Success Probability],
+    [$n p$],
+    [$n p (1-p)$],
+    [$vec(n, t) p^t (1-p)^(n-t)$],
+    [$sum^t_(k=0) vec(n, k) p^k (1-p)^(n-k)$],
+    [repeated trials, number of successes, binary outcomes],
+
+    [Geometric],
+    [$"Geo"(p)$],
+    [$p$: Success Probability \ ($t$: Event Count)],
+    [$1 / p$],
+    [$(1-p) / (p^2)$],
+    [$p (1-p)^(t-1)$],
+    [$1 - (1-p)^t$],
+    [trials until first success, waiting time],
+
+    [Poisson],
+    [$"Poisson"(lambda)$],
+    [$lambda$: $EE[X] "and" "Var"(X)$],
+    [$lambda$],
+    [$lambda$],
+    [$(lambda^t) / (t!) e^(- lambda)$],
+    [$e^(- lambda) sum^t_(k=0) (lambda^k) / (k!)$],
+    [rare events, fixed interval, error count],
+
+    [Hypergeometric],
+    [$H(n,r,m)$],
+    [$n in NN, m,r in {1,...,n}$],
+    [$m r / n$],
+    [$m r / n (1 - r / n) (n-m) / (n-1)$],
+    [$(vec(r, k)vec(n-r, m-k)) / vec(n, m)$],
+    [$sum^k_(y=0) (vec(r, y)vec(n-r, m-y)) / (vec(n, m))$],
+    [sampling without replacement, finite population],
+
+    [Negative Binomial],
+    [$"NBin"(r,p)$],
+    [$r in NN, p in [0,1]$],
+    [$r / p$],
+    [$(r(1-p)) / (p^2)$],
+    [$vec(k-1, r-1) p^r (1-p)^(k-r)$],
+    [too complicated],
+    [count until $r$ successes, aggregated counts],
+
+    table.cell(colspan: 8, align: center + horizon)[Continuous Distributions],
+
+    [Uniform],
+    [$U ~ cal(U)([a,b])$],
+    [$[a,b]$: Interval],
+    [$(a+b) / 2$],
+    [$1 / 12 (b-a)^2$],
+    [$cases(1 / (b-a) space.quad &a <= x <= b, 0 space.quad &"otherwise")$],
+    [$cases(0 space.quad &x <= a, (t-a) / (b-a) space.quad &a < x < b, 1 space.quad &x >= b)$],
+    [equal probability, continuous interval, random selection],
+
+    [Exponential],
+    [$"Exp"(lambda)$],
+    [$lambda$: $1 / (EE[X])$],
+    [$1 / lambda$],
+    [$1 / (lambda^2)$],
+    [$cases(lambda e^(- lambda t) space.quad &t >= 0, 0 space.quad &t < 0)$],
+    [$cases(1 - e^(- lambda t) space.quad &t > 0, 0 space.quad &t <= 0)$],
+    [time between events, memoryless, lifetimes],
+
+    [Normal],
+    [$cal(N)(mu, sigma^2)$],
+    [$mu$: $EE[X]$ \ $sigma^2$: $"Var"(X)$],
+    [$mu$],
+    [$sigma^2$],
+    [$1 / (sqrt(2 pi sigma^2)) e^(- ((t - mu)^2) / (2 sigma^2))$],
+    [$1 / (sigma sqrt(2 pi)) integral^t_(- infinity) e^(- 1 / 2 ((y - mu) / sigma)^2) d y$],
+    [bell curve, natural variation, central limit],
+
+    [$cal(X)^2$],
+    [$cal(X)^2_m$],
+    [$n$: Freedom Degree],
+    [$n$],
+    [$2n$],
+    [$1 / (2^(n / 2) Gamma (n / 2)) t^(n / 2 - 1) e^(- t / 2) "for" t > 0$],
+    [$P(n / 2, t / 2)$],
+    [goodness-of-fit, independence test, hypothesis testing],
+
+    [Student's $t$],
+    [$t_m$],
+    [$n$: Freedom Degree],
+    [$cases(0 space.quad &n > 1, "undef." space.quad &"otherwise")$],
+    [$cases(n / (n-2) space.quad &n > 2, infinity space.quad &1 < n <= 2, "undef." space.quad &"otherwise")$],
+    [$(Gamma ((n+1) / 2)) / (sqrt(n pi) Gamma (n / 2)) (1 + (t^2) / n)^(- (n+1) / 2)$],
+    [too complicated],
+    [small samples, unknown variance, confidence intervals],
+
+    [Cauchy],
+    [$"Cauchy"(x_0, gamma)$],
+    [$x_0 in RR, gamma > 0$],
+    [does not exist],
+    [does not exist],
+    [$1 / pi gamma / (gamma^2 + (x - x_0)^2)$],
+    [$1 / 2 + 1 / pi arctan ((x - x_0) / gamma)$],
+    [heavy tails, undefined mean/variance, physics/finance],
+  )
+]
