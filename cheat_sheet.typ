@@ -71,7 +71,7 @@
   ],
 )
 
-== Probability space
+= Probability space
 
 #def[
   #columns(2)[
@@ -87,7 +87,7 @@
   )
 ]
 
-=== Sigma Algebra
+== Sigma Algebra
 
 #def[
   #align(center)[$F$ *sigma algebra* $<=>$ $F subset P(Omega)$ and]
@@ -108,7 +108,7 @@
   ]
 ]
 
-=== Probability measure
+== Probability measure
 
 #def[
   #align(center)[$PP$ a *probability measure* on $(Omega, F)$ $<=>$ $PP$ a map:]
@@ -123,7 +123,7 @@
   #align(center)[$(Omega, F, PP)$ is a *probability space*]
 ]
 
-=== Terminology
+== Terminology
 
 #def[
   #columns(2)[
@@ -141,7 +141,7 @@
   ]
 ]
 
-=== Laplace model
+== Laplace model
 
 #def[
   #align(center)[*Laplace model* on $Omega$ is a triple $(Omega, F, PP)$ where]
@@ -151,7 +151,7 @@
   )
 ]
 
-=== Properties
+== Properties
 
 #def[
   #columns(2)[
@@ -175,7 +175,7 @@
   + $(B_n)$ decreasing ($B_n supset B_(n+1)$) $=> lim_(n->infinity)PP[B_n]=PP[inter^infinity_(n=1)B_n]$ (*Decreasing Limit*)
 ]
 
-== Conditional probabilities
+= Conditional probabilities
 
 #def[
   #align(center)[
@@ -187,7 +187,7 @@
   #note[$ PP[B|B] = 1 $]
 ]
 
-=== Properties
+== Properties
 
 #def[
   + $PP[.|B]$ is a *probability measure* on $Omega$
@@ -196,7 +196,7 @@
   + $PP[A>0] => PP[B_i | A ] = (PP[A|B_i]PP[B_i]) / (sum^n_(j=1)PP[A|B_j]PP[B_j])$ (*Bayes formula*)
 ]
 
-== Independence
+= Independence
 
 #def[
   #align(center)[$A$ and $B$ *independent* $<=> PP[A inter B] = PP[A]PP[B]$]
@@ -228,7 +228,7 @@
   ]
 ]
 
-== Random variables
+= Random variables
 
 #def[
   #align(center)[
@@ -236,7 +236,7 @@
   ]
 ]
 
-=== Indicator Function
+== Indicator Function
 
 #def[
   #align(center)[
@@ -246,7 +246,7 @@
   ]
 ]
 
-== Distribution function
+= Distribution function
 
 #def[
   #align(center)[
@@ -254,7 +254,7 @@
   ]
 ]
 
-=== Properties
+== Properties
 
 #def[
   #columns(2)[
@@ -266,7 +266,7 @@
   ]
 ]
 
-=== Independence
+== Independence
 
 #def[
   #align(center)[$X_1, ..., X_n$ *independent* $<=> forall x_1, ..., x_n in RR:$]
@@ -278,7 +278,7 @@
   $ Y_1 = phi.alt_1 (X_1, ..., X_(i_1)), ..., Y_k = phi.alt_k (X_(i_(k-1) + 1), ..., X_(i_k)) $
 ]
 
-=== Sequence
+== Sequence
 
 #def[
   #align(center)[
@@ -288,4 +288,4 @@
   - *independent and identically distributed (iid)* if independent and same distribution function ($forall i,j space F_(X_i) = F_(X_j)$)
 ]
 
-=== Bernoulli Variable
+== Bernoulli Variable
