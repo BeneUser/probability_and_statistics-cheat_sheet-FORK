@@ -404,7 +404,7 @@
     [repeated trials, number of successes, binary outcomes],
 
     [Geometric],
-    [$"Geo"(p)$],
+    [$"Geom"(p)$],
     [$p$: Success Probability \ ($t$: Event Count)],
     [$1 / p$],
     [$(1-p) / (p^2)$],
