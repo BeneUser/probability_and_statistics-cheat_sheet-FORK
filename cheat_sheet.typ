@@ -431,6 +431,56 @@
   $ PP[| X - m | >= 3 sigma] <= 0.0027 $
 ]
 
+= Expectation
+
+#def[
+  $ EE[X] = integral^infinity_0 (1 - F_X(x)) d x $
+
+  #note[
+    + $X: Omega -> RR_+$
+    + can be finite or infinite
+    + $EE[X] >= 0 space.quad (X > 0)$
+    + $X=0 "a.s." => EE[X] = 0$
+  ]
+]
+
+#def[
+  $ EE[ |X| ] <= infinity => EE[X] = EE[X_+] - EE[X_-] $
+
+  #note[
+    $
+      X_+ (omega) &= cases(X(omega) space.quad &"if" &X(omega) >= 0, 0 &"if" &X(omega) < 0) \ X_-(omega) &= cases(-X(omega) space.quad &"if" &X(omega) <= 0, 0 &"if" &X(omega) > 0)
+    $
+    $ X = X_+ - X_- space.quad "and" space.quad |X| = X_+ + X_- $
+  ]
+]
+
+== Discrete
+
+#def[
+  $ EE[X] = sum_(x in W) x dot.c PP[X = x] $
+]
+
+#def[
+  $ EE[phi.alt (X)] = sum_(x in W) phi.alt (x) dot.c PP[X=x] $
+]
+
+== Continuous
+
+#def[
+  $ EE[X] = integral^infinity_(-infinity) x dot.c f(x) d x $
+]
+
+#def[
+  $ EE[phi.alt (X)] = integral^infinity_(-infinity) phi.alt (x) f(x) d x $
+]
+
+== Calculus
+
+#def[
+  $ EE[lambda X] = lambda EE[X] space.quad "and" space.quad EE[X+Y] = EE[X] + EE[Y] $
+]
+
 #pagebreak()
 
 = Formula Collection
