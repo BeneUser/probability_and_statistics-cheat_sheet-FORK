@@ -274,11 +274,8 @@
 ]
 
 #not_relevant[
-  If we have a set of independent random variables, and we make disjoint groups of such
-  random variables, then these groups are also independent form each other. This idea is
-  formalized by the following proposition:
-
-  #text(stroke: red, align(center)[TODO])
+  (*grouping*) $X_1, ..., X_n$ independent, $1 <= i_1 < dots.c < i_k <= n$ indices, $phi.alt_1, ..., phi.alt_k$ functions, this is *independent*:
+  $ Y_1 = phi.alt_1 (X_1, ..., X_(i_1)), ..., Y_k = phi.alt_k (X_(i_(k-1) + 1), ..., X_(i_k)) $
 ]
 
 === Sequence
@@ -289,5 +286,6 @@
   ]
   - *independent* if $X_1, ..., X_n$ independent for every $n$
   - *independent and identically distributed (iid)* if independent and same distribution function ($forall i,j space F_(X_i) = F_(X_j)$)
-  )
 ]
+
+=== Bernoulli Variable
