@@ -458,21 +458,13 @@
 == Discrete
 
 #def[
-  $ EE[X] = sum_(x in W) x dot.c PP[X = x] $
-]
-
-#def[
-  $ EE[phi.alt (X)] = sum_(x in W) phi.alt (x) dot.c PP[X=x] $
+  $ EE[X] = sum_(x in W) x dot.c PP[X = x] "and" EE[phi.alt (X)] = sum_(x in W) phi.alt (x) dot.c PP[X=x] $
 ]
 
 == Continuous
 
 #def[
-  $ EE[X] = integral^infinity_(-infinity) x dot.c f(x) d x $
-]
-
-#def[
-  $ EE[phi.alt (X)] = integral^infinity_(-infinity) phi.alt (x) f(x) d x $
+  $ EE[X] = integral^infinity_(-infinity) x dot.c f(x) d x space.quad "and" space.quad EE[phi.alt (X)] = integral^infinity_(-infinity) phi.alt (x) f(x) d x $
 ]
 
 == Calculus
