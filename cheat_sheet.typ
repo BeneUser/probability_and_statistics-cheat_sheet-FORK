@@ -573,7 +573,7 @@
   $ X,Y "independent" <=> \ forall phi.alt, psi "piecewise continuous, bounded" "Cov"(phi.alt (X), psi (Y)) = 0 $
 ]
 
-= Discrete Joint distribution
+= Discrete Joint Distribution
 
 #def[
   $ X_1, ..., X_n "discrete", X_i in W_i "a.s.", W_i subset RR "finite or countable:" \ p(x_1, ..., x_n) = PP[X_1 = x_1, ..., X_n = x_n] $
