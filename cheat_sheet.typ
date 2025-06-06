@@ -71,7 +71,7 @@
   ],
 )
 
-= Probability space
+= Probability Space
 
 #def[
   #columns(2)[
@@ -108,7 +108,7 @@
   ]
 ]
 
-== Probability measure
+== Probability Measure
 
 #def[
   #align(center)[$PP$ a *probability measure* on $(Omega, F)$ $<=>$ $PP$ a map:]
@@ -141,7 +141,7 @@
   ]
 ]
 
-== Laplace model
+== Laplace Model
 
 #def[
   #align(center)[*Laplace model* on $Omega$ is a triple $(Omega, F, PP)$ where]
@@ -175,7 +175,7 @@
   + $(B_n)$ decreasing ($B_n supset B_(n+1)$) $=> lim_(n->infinity)PP[B_n]=PP[inter^infinity_(n=1)B_n]$ (*Decreasing Limit*)
 ]
 
-= Conditional probabilities
+= Conditional Probabilities
 
 #def[
   #align(center)[
@@ -228,7 +228,7 @@
   ]
 ]
 
-= Random variables
+= Random Variables
 
 #def[
   #align(center)[
@@ -246,7 +246,7 @@
   ]
 ]
 
-= Distribution function
+= Distribution Function
 
 #def[
   #align(center)[
@@ -367,7 +367,7 @@
   $ forall n >= 0, k >=1 space.quad PP[T >= n + k | T > n] = PP[T >= k] $
 ]
 
-== Continuous random variables
+== Continuous Random Variables
 
 #def[
   $
@@ -593,7 +593,7 @@
   $
 ]
 
-=== Marginal distributions
+=== Marginal Distributions
 
 #def[
   $
@@ -601,7 +601,7 @@
   $
 ]
 
-=== Expectation of the image
+=== Expectation of the Image
 
 #def[
   $ EE[phi.alt (X_1, ..., X_n)] = sum_(x_1, ..., x_n) phi.alt (x_1, ..., x_n) p(x_1, ..., x_n) $
@@ -629,7 +629,7 @@
   $ integral^(infinity)_(-infinity) dots.c integral^(infinity)_(-infinity) f(x_1, ..., x_n) d x_n dots.c d x_1 = 1 $
 ]
 
-=== Expectation of the image
+=== Expectation of the Image
 
 #def[
   $
@@ -637,7 +637,7 @@
   $
 ]
 
-=== Marginal densities
+=== Marginal Densities
 
 #def[
   $
@@ -651,6 +651,51 @@
   $
     X_1, ..., X_n "independent" <=> X_1, ..., X_n "jointly continuous" \ "with" f(x_1, ..., x_n) = f_1 (x_1) dots.c f_n (x_n)
   $
+]
+
+= Asymptotic Results
+
+#def[
+  $ S_n / n = (X_1 + ... + X_n) / n = #strong("empirical average") $
+
+  #note[
+    $ X_i "are i.i.d"#footnote("independent and identically distributed") $
+  ]
+]
+
+== Law of Large Numbers
+
+#def[
+  $ lim_(n -> infinity) (X_1 + ... + X_n) / n = m = EE[X_1] $
+]
+
+== Monte-Carlo Integration
+
+#def[
+  #align(center)[Goal: Calculate $I = integral^1_0 g(x) d x$. \ #line(length: 90%)]
+  $
+    EE[g(U)] = integral^1_0 g(x) d x = 1, U ~ cal(U)([0,1]) \ => lim_(n -> infinity) (g(U_1) + ... + g(U_n)) / n = I = EE[ |X_1| ], X_n = g(U_n) \ => "get I by calculating" \ (g(U_1) + ... + g(U_n)) / n "for large n, simulate" U_i
+  $
+]
+
+== Convergence in Distribution
+
+#def[
+  $
+    X_n attach(approx, t: "Approx") X "as" n -> infinity \ "if for every" x in RR \ lim_(n -> infinity) PP[X_n <= x] = PP[X <= x]
+  $
+]
+
+== Central Limit Theorem
+
+#def[
+  $ m = EE[X_1], sigma^2 = "Var"(X_1), S_n = sum^n_(i=1) X_i, Phi = cal(N)(0,1) => \ PP[(S_n - n m) / sqrt(sigma^2 n) <= a] arrow.r.long_(n -> infinity) Phi (a) = 1 / sqrt(2 pi) integral^a_(- infinity) e^(-x^2/2) d x $
+
+  #note[
+    $ Z_n attach(approx, t: "Approx") Z "as" n -> infinity $
+    $ EE[Z_n = 0] space.quad "and" space.quad "Var"(Z_n) = 1 $
+    $ lim_(n -> infinity) PP[n m - 2 sqrt(sigma^2 n) <= S_n <= m n + 2 sqrt(sigma^2 n)] = p tilde.eq 95% $
+  ]
 ]
 
 #pagebreak()
