@@ -478,6 +478,62 @@
   $ EE[lambda X] = lambda EE[X] space.quad "and" space.quad EE[X+Y] = EE[X] + EE[Y] $
 ]
 
+#def[
+  $ X "and" Y "independent" => EE[X Y] = EE[X] EE[Y] $
+]
+
+== Tailsum
+
+#def[
+  $ PP[X >= 0] = 1 => EE[X] = integral^infinity_0 PP[X>x] d x $
+]
+
+#def[
+  $ X subset.eq NN => EE[X] = sum^infinity_(n=1) PP[X >= n] $
+]
+
+== Density
+
+#def[
+  #align(center)[if $integral^(+infinity)_(- infinity) f(x) d x = 1$ then those are equivalent:]
+  + $X$ is continuous with density $f$
+  + $forall phi.alt: RR -> RR$ piecewise continuous, bounded: $ EE[phi.alt (X)] = integral^infinity_(-infinity) phi.alt (x) f(x) d x $
+]
+
+== Independence
+
+#def[
+  $ X_1, ..., X_n "independent" <=> \ forall phi.alt_1 : RR -> RR, ..., phi.alt_n : RR -> RR "piecewise continuous, bounded:" \ EE[phi.alt_1 (X_1) dots.c phi.alt_n (X_n)] = EE[phi.alt_1 (X_1)] dots.c EE[phi.alt_n (X_n)] $
+]
+
+== Inequalities
+
+=== Monotonicity
+
+#def[
+  $ X <= Y "a.s." => EE[X] <= EE[Y] $
+]
+
+=== Markov
+
+#def[
+  $ X >= 0 => forall a > 0: PP[X>=a] <= (EE[X])/a $
+]
+
+=== Jensen
+
+#def[
+  $ phi.alt "konvex" => phi.alt (EE[X]) <= EE[phi.alt (X)] $
+
+  #note[
+    #columns(2)[
+      - $|EE[X| <= EE[|X|]$
+      #colbreak()
+      - $EE[|X|] <= sqrt(EE[X^2])$
+    ]
+  ]
+]
+
 #pagebreak()
 
 = Formula Collection
