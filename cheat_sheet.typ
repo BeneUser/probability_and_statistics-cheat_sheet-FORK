@@ -756,6 +756,10 @@
   ]
 ]
 
+= Confidence Intervals
+
+= Tests
+
 #pagebreak()
 
 = Formula Collection
