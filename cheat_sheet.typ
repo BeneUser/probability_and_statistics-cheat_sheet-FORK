@@ -573,7 +573,9 @@
   $ X,Y "independent" <=> \ forall phi.alt, psi "piecewise continuous, bounded" "Cov"(phi.alt (X), psi (Y)) = 0 $
 ]
 
-= Discrete Joint Distribution
+= Joint Distribution
+
+== Discrete
 
 #def[
   $ X_1, ..., X_n "discrete", X_i in W_i "a.s.", W_i subset RR "finite or countable:" \ p(x_1, ..., x_n) = PP[X_1 = x_1, ..., X_n = x_n] $
@@ -587,23 +589,25 @@
   $ Z = phi.alt (X_1, ..., X_n), W = phi.alt (W_1 times dots.c W_n): \ forall z in W: PP[Z = z] = sum^(x_1 in W_1, ..., x_n in W_n)_(phi.alt (x_1, ..., x_n) = z) PP[X_1 = x_1, ..., X_n = x_n] $
 ]
 
-== Marginal distributions
+=== Marginal distributions
 
 #def[
   $ forall z in W_i: PP[X_i = z] = \ sum_(x_1, ..., x_(i-1), x_(i+1), ..., x_n) p(x_1, ..., x_(i-1), z, x_(i+1), ..., x_n) $
 ]
 
-== Expectation of the image
+=== Expectation of the image
 
 #def[
   $ EE[phi.alt (X_1, ..., X_n)] = sum_(x_1, ..., x_n) phi.alt (x_1, ..., x_n) p(x_1, ..., x_n) $
 ]
 
-== Independence
+=== Independence
 
 #def[
   $ X_1, ..., X_n "independent" <=> \ p(x_1, ..., x_n) = PP[X_1 = x_1] dots.c PP[X_n = x_n] \ "for every" x_1 in W_1, ..., x_n in W_n $
 ]
+
+== Continuous
 
 #pagebreak()
 
