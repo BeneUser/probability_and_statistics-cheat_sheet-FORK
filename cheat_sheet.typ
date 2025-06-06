@@ -44,11 +44,12 @@
 
 // BOXES
 
-#let _block = block.with(inset: 6pt, radius: 2pt, width: 100%, breakable: true);
+#let _block = block.with(inset: 6pt, radius: 2pt, width: 100%, breakable: true, stroke: black);
 #let def(body) = _block(body, stroke: blue)
 #let note(body) = _block(body, stroke: orange)
 #let form(body) = _block(body, stroke: black)
 #let not_relevant(body) = _block(body, stroke: (paint: gray, dash: "dashed"))
+#let example(body) = _block(body, stroke: purple)
 
 // HELPERS
 #let spread = grid.with(
@@ -62,7 +63,8 @@
   2,
   text(size: 0.5em)[
     #def[Definitions, Lemmas, Propositions, etc.]
-    #note[Notes, Examples]
+    #note[Notes, Remarks]
+    #example[Examples]
 
     #colbreak()
 
@@ -689,7 +691,9 @@
 == Central Limit Theorem
 
 #def[
-  $ m = EE[X_1], sigma^2 = "Var"(X_1), S_n = sum^n_(i=1) X_i, Phi = cal(N)(0,1) => \ PP[(S_n - n m) / sqrt(sigma^2 n) <= a] arrow.r.long_(n -> infinity) Phi (a) = 1 / sqrt(2 pi) integral^a_(- infinity) e^(-x^2/2) d x $
+  $
+    m = EE[X_1], sigma^2 = "Var"(X_1), S_n = sum^n_(i=1) X_i, Phi = cal(N)(0,1) => \ PP[(S_n - n m) / sqrt(sigma^2 n) <= a] arrow.r.long_(n -> infinity) Phi (a) = 1 / sqrt(2 pi) integral^a_(- infinity) e^(-x^2 / 2) d x
+  $
 
   #note[
     $ Z_n attach(approx, t: "Approx") Z "as" n -> infinity $
