@@ -578,7 +578,9 @@
 == Discrete
 
 #def[
-  $ X_1, ..., X_n "discrete", X_i in W_i "a.s.", W_i subset RR "finite or countable:" \ p(x_1, ..., x_n) = PP[X_1 = x_1, ..., X_n = x_n] $
+  $
+    X_1, ..., X_n "discrete", X_i in W_i "a.s.", W_i subset RR "finite or countable:" \ p(x_1, ..., x_n) = PP[X_1 = x_1, ..., X_n = x_n]
+  $
 ]
 
 #def[
@@ -586,13 +588,17 @@
 ]
 
 #def[
-  $ Z = phi.alt (X_1, ..., X_n), W = phi.alt (W_1 times dots.c W_n): \ forall z in W: PP[Z = z] = sum^(x_1 in W_1, ..., x_n in W_n)_(phi.alt (x_1, ..., x_n) = z) PP[X_1 = x_1, ..., X_n = x_n] $
+  $
+    Z = phi.alt (X_1, ..., X_n), W = phi.alt (W_1 times dots.c W_n): \ forall z in W: PP[Z = z] = sum^(x_1 in W_1, ..., x_n in W_n)_(phi.alt (x_1, ..., x_n) = z) PP[X_1 = x_1, ..., X_n = x_n]
+  $
 ]
 
 === Marginal distributions
 
 #def[
-  $ forall z in W_i: PP[X_i = z] = \ sum_(x_1, ..., x_(i-1), x_(i+1), ..., x_n) p(x_1, ..., x_(i-1), z, x_(i+1), ..., x_n) $
+  $
+    forall z in W_i: PP[X_i = z] = \ sum_(x_1, ..., x_(i-1), x_(i+1), ..., x_n) p(x_1, ..., x_(i-1), z, x_(i+1), ..., x_n)
+  $
 ]
 
 === Expectation of the image
@@ -604,10 +610,48 @@
 === Independence
 
 #def[
-  $ X_1, ..., X_n "independent" <=> \ p(x_1, ..., x_n) = PP[X_1 = x_1] dots.c PP[X_n = x_n] \ "for every" x_1 in W_1, ..., x_n in W_n $
+  $
+    X_1, ..., X_n "independent" <=> \ p(x_1, ..., x_n) = PP[X_1 = x_1] dots.c PP[X_n = x_n] \ "for every" x_1 in W_1, ..., x_n in W_n
+  $
 ]
 
 == Continuous
+
+=== Joint Density
+
+#def[
+  $
+    PP[X_1 <= a_1, ..., X_n <= a_n] = integral^(a_1)_(-infinity) dots.c integral^(a_n)_(-infinity) f(x_1, ..., x_n) d x_n dots.c d x_1
+  $
+]
+
+#def[
+  $ integral^(infinity)_(-infinity) dots.c integral^(infinity)_(-infinity) f(x_1, ..., x_n) d x_n dots.c d x_1 = 1 $
+]
+
+=== Expectation of the image
+
+#def[
+  $
+    EE[phi.alt (X_1, ..., X_n)] = \ integral^infinity_(-infinity) dots.c integral^infinity_(-infinity) phi.alt (x_1, ..., x_n) dot.c f(x_1, ..., x_n) d x_n dots.c d x_1
+  $
+]
+
+=== Marginal densities
+
+#def[
+  $
+    f_i (z) = integral_((x_1,...,x_(i-1), x_(i+1), ..., x_n) in RR^(n-1)) f(x_1, ..., x_(i-1), z, x_(i+1), ..., x_n) \ d x_1 dots.c d x_(i-1) d x_(i+1) dots.c d x_n
+  $
+]
+
+=== Independence
+
+#def[
+  $
+    X_1, ..., X_n "independent" <=> X_1, ..., X_n "jointly continuous" \ "with" f(x_1, ..., x_n) = f_1 (x_1) dots.c f_n (x_n)
+  $
+]
 
 #pagebreak()
 
