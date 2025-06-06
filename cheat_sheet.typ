@@ -549,10 +549,28 @@
 
 #def[
   $ EE[X^2] < infinity: $
-  - $forall a >= 0: PP[ |X-m| >= a] <= (sigma^2_X)/(a^2), space.quad m = EE[X]$
+  - $forall a >= 0: PP[ |X-m| >= a] <= (sigma^2_X) / (a^2), space.quad m = EE[X]$
   - $sigma_X^2 = EE[X^2] - EE[X]^2$
   - $lambda in RR => sigma^2_(lambda X) = lambda^2 dot.c sigma^2_X$
   - $X_1, ..., X_n "pairwise independent", S = X_1, ..., X_n => sigma^2_S = sigma^2_(X_1) + ... + sigma^2_(X_n)$
+]
+
+= Covariance
+
+#def[
+  $ "Cov"(X,Y) = EE[X Y] - EE[X] EE[Y] $
+
+  #note[
+    #align(center)[quantifies the dependence between two random variables]
+  ]
+]
+
+#def[
+  $ X,Y "independent" => "Cov"(X,Y) = 0 $
+]
+
+#def[
+  $ X,Y "independent" <=> \ forall phi.alt, psi "piecewise continuous, bounded" "Cov"(phi.alt (X), psi (Y)) = 0 $
 ]
 
 #pagebreak()
