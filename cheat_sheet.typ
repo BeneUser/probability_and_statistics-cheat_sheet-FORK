@@ -702,6 +702,60 @@
   ]
 ]
 
+= Estimators
+
+#def[
+  #align(center)[
+    Estimate unknown parameter $theta$ based on sample $X_1, ..., X_n$
+  ]
+]
+
+#def[
+  $ T: Omega -> RR #strong("Estimator") "with" T = t(X_1, ..., X_n) \ t: RR^n -> RR "measurable function" $
+  $ t(x_1, ..., x_n) = "estimate for observed data" x_1, ..., x_n "for" theta $
+]
+
+== Bias and Mean Squared Error
+
+#def[
+  $ T "unbiased for" theta <=> forall theta in Theta: EE_theta [T] = theta $
+]
+
+#def[
+  $ "Bias"_theta (T) = EE_theta [T] - theta $
+  $ "MSE"_theta (T) = EE_theta [(T-theta)^2] $
+  $ "MSE"_theta (T) = "Var"_theta (T) + ("Bias"_theta (T))^2 $
+]
+
+== Maximum Likelihood Estimation (MLE)
+
+=== Likelihood Function
+
+#def[
+  $
+    L(x_1, ..., x_n ; theta) = cases(product^n_(i=1) p_(X_i) (x_i ; theta) space.quad &"if" X_i "are discrete", product^n_(i=1) f_(X_i) (x_i ; theta) &"if" X_i "are continuous")
+  $
+]
+
+=== Maximum Likelihood Estimator (MLE)
+
+#def[
+  $ hat(theta)_"ML" (x_1, ..., x_n) in arg max_(theta in Theta) L(x_1, ..., x_n ; theta) $
+]
+
+==== Log-Likelihood Function
+
+#def[
+  $ l(theta ; x_1, ..., x_n) = log L (x_1, ..., x_n ; theta) $
+  $ T_"ML" = t_"ML" (X_1, ..., X_n) $
+
+  #note[
+    #align(center)[
+      find maximum = derivation is 0 \ use logarithm because it's easier to differentiate \ this also works for more dimensions
+    ]
+  ]
+]
+
 #pagebreak()
 
 = Formula Collection
