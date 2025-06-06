@@ -503,7 +503,9 @@
 == Independence
 
 #def[
-  $ X_1, ..., X_n "independent" <=> \ forall phi.alt_1 : RR -> RR, ..., phi.alt_n : RR -> RR "piecewise continuous, bounded:" \ EE[phi.alt_1 (X_1) dots.c phi.alt_n (X_n)] = EE[phi.alt_1 (X_1)] dots.c EE[phi.alt_n (X_n)] $
+  $
+    X_1, ..., X_n "independent" <=> \ forall phi.alt_1 : RR -> RR, ..., phi.alt_n : RR -> RR "piecewise continuous, bounded:" \ EE[phi.alt_1 (X_1) dots.c phi.alt_n (X_n)] = EE[phi.alt_1 (X_1)] dots.c EE[phi.alt_n (X_n)]
+  $
 ]
 
 == Inequalities
@@ -517,7 +519,7 @@
 === Markov
 
 #def[
-  $ X >= 0 => forall a > 0: PP[X>=a] <= (EE[X])/a $
+  $ X >= 0 => forall a > 0: PP[X>=a] <= (EE[X]) / a $
 ]
 
 === Jensen
@@ -532,6 +534,25 @@
       - $EE[|X|] <= sqrt(EE[X^2])$
     ]
   ]
+]
+
+= Variance
+
+#def[
+  $ EE[X^2] < infinity => "Var"(X) = sigma_X^2 = EE[(X-m)^2], m = EE[X] $
+  $ sigma_X = #strong("standard deviation") $
+
+  #note[
+    #align(center)[indicator of fluctuations around $m = EE[X]$]
+  ]
+]
+
+#def[
+  $ EE[X^2] < infinity: $
+  - $forall a >= 0: PP[ |X-m| >= a] <= (sigma^2_X)/(a^2), space.quad m = EE[X]$
+  - $sigma_X^2 = EE[X^2] - EE[X]^2$
+  - $lambda in RR => sigma^2_(lambda X) = lambda^2 dot.c sigma^2_X$
+  - $X_1, ..., X_n "pairwise independent", S = X_1, ..., X_n => sigma^2_S = sigma^2_(X_1) + ... + sigma^2_(X_n)$
 ]
 
 #pagebreak()
