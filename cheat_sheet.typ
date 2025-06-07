@@ -1,3 +1,6 @@
+#import "@preview/cetz:0.3.1"
+#import "@preview/cetz-plot:0.1.0": *
+
 // CONFIGURATION
 #set document(
   author: "Dominik Schwaiger",
@@ -899,7 +902,9 @@
 ==== General
 
 #def[
-  $ R(x_1, ..., x_n) = (sup_(theta in Theta_A) L(x_1, ..., x_n ; theta)) / (sup_(theta in Theta_0) L(x_1, ..., x_n ; theta)) $
+  $
+    R(x_1, ..., x_n) = (sup_(theta in Theta_A) L(x_1, ..., x_n ; theta)) / (sup_(theta in Theta_0) L(x_1, ..., x_n ; theta))
+  $
 
   #note[
     #align(center)[
@@ -931,6 +936,457 @@
 #pagebreak()
 
 = Formula Collection
+
+#show math.equation: set block(breakable: true) // equations in the collection should wrap pages
+
+=== Unit Circle
+
+#form()[
+  #context {
+    set align(center)
+    set text(size: 10pt)
+
+    cetz.canvas(
+      length: 2.5cm,
+      {
+        import cetz.draw: *
+
+        let entries = (
+          (0deg, $0$),
+          (15deg, $pi / 12$),
+          (30deg, $pi / 6$),
+          (45deg, $pi / 4$),
+          (60deg, $pi / 3$),
+          (75deg, $(5pi) / 12$),
+          (90deg, $pi / 2$),
+          (105deg, $(7pi) / 12$),
+          (120deg, $(2pi) / 3$),
+          (135deg, $(3pi) / 4$),
+          (150deg, $(5pi) / 6$),
+          (165deg, $(11pi) / 12$),
+          (180deg, $pi$),
+          (195deg, $(13pi) / 12$),
+          (210deg, $(7pi) / 6$),
+          (225deg, $(5pi) / 4$),
+          (240deg, $(4pi) / 3$),
+          (255deg, $(17pi) / 12$),
+          (270deg, $(3pi) / 2$),
+          (285deg, $(19pi) / 12$),
+          (300deg, $(5pi) / 3$),
+          (315deg, $(7pi) / 4$),
+          (330deg, $(11pi) / 6$),
+          (345deg, $(23pi) / 12$),
+        )
+
+        set-style(mark: (fill: black, scale: 2), stroke: (thickness: 0.4pt, cap: "round"), content: (padding: 1pt))
+
+        let inner_factor = 1.15 // factor by which cos/sin are scaled for the inner text ring
+        let outer_factor = 1.35 // factor by which cos/sin are scaled for the outer text ring
+
+        for (deg, label) in entries {
+          let text_angle = if deg < 180deg { deg - 90deg } else { deg + 90deg }
+
+          line(
+            (0, 0),
+            (calc.cos(deg), calc.sin(deg)),
+            stroke: (dash: "dashed"),
+          )
+          content((calc.cos(deg) * inner_factor, calc.sin(deg) * inner_factor), label, angle: text_angle)
+          content(
+            (calc.cos(deg) * outer_factor, calc.sin(deg) * outer_factor),
+            $ #calc.round(deg.deg())° $,
+            angle: text_angle,
+          )
+        }
+
+        circle((0, 0), radius: 1)
+
+        line((-1, 0), (1, 0))
+        line((0, -1), (0, 1))
+      },
+    )
+  }
+
+  #columns(2)[
+    #figure(image("images/unit_circle.svg", width: 100%))
+    #colbreak()
+    #figure(image("images/unit_triangle.svg", width: 100%))
+  ]
+
+  *Sources:* #link("https://commons.wikimedia.org/w/index.php?curid=11434668")[Wiki Commons: Dnu72, Pengo] and #link("https://commons.wikimedia.org/wiki/File:Sinus_und_Kosinus_am_Einheitskreis_Einfach_Cos.svg")[Wiki Commons: Yomomo]
+]
+
+=== Pythagoras
+
+#form()[
+  Let $a$ be the adjacent, $b$ be the opposite and $c$ be the hypotenuse. Then:
+
+  $ a^2 + b^2 = c^2 $
+]
+
+=== Trigonometric Functions
+
+#form()[
+  $
+    sin (alpha) = "opposite" / "hypotenuse" space.quad space.quad cos (alpha) = "adjacent" / "hypotenuse" \
+    tan (alpha) = (sin (alpha)) / (cos (alpha)) = "opposite" / "adjacent" \
+    cot (alpha) = (1) / (sin (alpha)) = "hypotenuse" / "opposite" \
+    sec (alpha) = (1) / (cos (alpha)) = "hypotenuse" / "adjacent" \
+  $
+]
+
+=== Trigonometric Values
+
+#form()[
+  $ + pi <=> dot -1 $
+
+  #table(
+    columns: (1fr, 1fr, 1fr, 1fr, 1fr),
+    table.header([*deg*], [*rad*], [*sin*], [*cos*], [*tan*]),
+    stroke: (x, y) => if y == 0 {
+      (bottom: 0.7pt + black)
+    },
+    $0 degree$, $0$, $0$, $1$, $0$,
+    $30 degree$, $pi / 6$, $1 / 2$, $sqrt(3) / 2$, $sqrt(3) / 3$,
+    $45 degree$, $pi / 4$, $sqrt(2) / 2$, $sqrt(2) / 2$, $1$,
+    $60 degree$, $pi / 3$, $sqrt(3) / 2$, $1 / 2$, $sqrt(3)$,
+    $90 degree$, $pi / 2$, $1$, $0$, $"N/A"$,
+    $120 degree$, $(2 pi) / 3$, $sqrt(3) / 2$, $- 1 / 2$, $- sqrt(3)$,
+    $135 degree$, $(3 pi) / 4$, $sqrt(2) / 2$, $- sqrt(2) / 2$, $-1$,
+    $150 degree$, $(5 pi) / 6$, $1 / 2$, $- sqrt(3) / 2$, $- 1 / sqrt(3)$,
+    $180 degree$, $pi$, $0$, $-1$, $0$,
+  )
+]
+
+=== Trigonometric Identities
+
+#form()[
+  ==== Inverse
+
+  $
+    cos (x) = cos (-x) , space - sin (x) = sin (-x) \
+    cos (pi - x) = -cos (x) , space sin (pi - x) = sin (x), space |sin (x)| lt.eq.slant x
+  $
+
+  ==== Doubled Angles
+
+  $
+    sin (2 alpha) = 2 sin (alpha) cos (alpha) \
+    cos ( 2 alpha) = cos^2 (alpha) - sin^2 (alpha) = 1 - 2 sin^2 (alpha) \
+    tan (2 alpha) = (2 tan (alpha)) / (1 - tan^2 (alpha))
+  $
+
+  ==== Addition / Subtraction
+
+  $
+    sin (alpha plus.minus beta) = sin (alpha) cos (beta) plus.minus cos (alpha) sin (beta) \
+    cos (alpha plus.minus beta) = cos (alpha) cos (beta) minus.plus sin (alpha) sin (beta) \
+    tan (alpha plus.minus beta) = (tan (alpha) plus.minus tan (beta)) / (1 minus.plus tan (alpha) tan (beta))
+  $
+
+  ==== Multiplication
+
+  $
+    sin (alpha) sin (beta) &= - (cos (alpha + beta) - cos (alpha - beta)) / 2 \
+    cos (alpha) cos (beta) &= (cos (alpha + beta) + cos (alpha - beta)) / 2 \
+    sin (alpha) cos (beta) &= (sin (alpha + beta) + sin (alpha - beta)) / 2
+  $
+
+  ==== Powers
+
+  $
+    sin^2 (alpha) &= 1 / 2 (1 - cos (2 alpha)) \
+    sin^3 (alpha) &= (3 sin (alpha) - sin (3 alpha)) / 4 \
+    cos^2 (alpha) &= 1 / 2 (1 + cos (2 alpha)) \
+    cos^3 (alpha) &= (3 cos (alpha) - cos (3 alpha)) / 4 \
+    tan^2 (alpha) &= (1 - cos ( 2 alpha)) / (1 + cos (2 alpha)) \
+    sin^2 (alpha) cos^2 (alpha) &= (1 - cos (4 alpha)) / 8
+  $
+
+  ==== Divers
+
+  $
+    sin^2 (alpha) + cos^2 (alpha) &= 1 \
+    cosh^2 (alpha) - sinh^2 (alpha) &= 1 \
+    sin (z) &= (e^(i z) - e^(- i z)) / (2 i) \
+    cos (z) &= (e^(i z) + e^(- i z)) / 2 \
+    tan (x) = (sin (x)) / (cos (x)) &, space cot (x) = (cos (x)) / (sin (x)) \
+    sin (arctan (x)) &= x / sqrt(x^2 + 1) \
+    cos (arctan (x)) &= 1 / sqrt(x^2 + 1) \
+    sin (x) &= (tan (x)) / sqrt(1 + tan^2 (x)) \
+    cos (x) &= 1 / sqrt(1 + tan^2 (x)) \
+    cosh (x)^k &= cosh (x) "for even" k \
+    cosh (x)^k &= sinh (x) "for odd" k
+  $
+]
+
+=== Midnight / Quadratic Formula
+
+#form()[
+  ==== General ($a x^2 + b x + c = 0$)
+  #columns(2)[
+    $ x = (-b plus.minus sqrt(b^2 - 4 a c)) / (2 a) $
+    #colbreak()
+    $ b^2 - 4 a c < 0 \ => x "complex" $
+  ]
+
+  === Simple ($x^2 + p x + q = 0$)
+  #columns(2)[
+    $ x = -p / 2 plus.minus sqrt((p / 2)^2 - q) $
+    #colbreak()
+    $ (p / 2)^2 - q < 0 \ => x "complex" $
+  ]
+]
+
+=== Logarithm Rules
+
+#form()[
+  $
+    log_b (x dot y) &= log_b (x) + log_b (y) \
+    log_b (x / y) &= log_b (x) - log_b (y) \
+    log_b (x^p) &= p log_b (x) \
+    log_b (root(p, x)) &= (log_b (x)) / p \
+    log_b (a) &= (log_k (a)) / (log_k (b)) = (ln (a)) / (ln (a)) \
+    ln (1) = 0 &, space ln (e) = 1
+  $
+]
+
+=== Exponential Rules
+
+#form()[
+  $
+    e^(x) e^(y) &= e^(x + y) \
+    e^(x) &gt 1, space.quad x > 0 \
+    x^a &= e^(a dot ln (x)) \
+    e^(i z) &= cos (z) + i sin (z) \
+    e^((i pi) / 2) = i, space e^(i pi) &= -1, space e^(2i pi) = 1
+  $
+]
+
+=== Differentiation Rules
+
+#form()[
+  $
+    (a f plus.minus b g)' &= a f' plus.minus b g' \
+    (f g)' (x) &= f' (x) g(x) + f (x) g' (x) \
+    (f (g (x)))' &= f' (g (x)) dot g' (x) \
+    g' &= 1 / (f' compose g), space.quad g = f^(-1) \
+    (1 / f(x))' &= - (f' (x)) / (f (x))^2 \
+    (f / g)' &= (f' g - g' f) / g^2 \
+    (a^f)' &= ln (a) dot a^f dot f'
+  $
+]
+
+=== Integration Rules
+
+#form()[
+  $
+    F(x) &= integral_a^x f(t) d t, space.quad F'(x) = f(x) \
+    integral^b_a f(x) d x &= F(b) - F(a) \
+    integral (a f plus.minus b g) d x &= a integral f d x plus.minus b integral g d x \
+    integral x^n d x &= (x^(n+1)) / (n + 1) + C \
+    integral f dot g' d x &= f dot g - integral f' g d x \
+    F compose Phi (u) &= integral f(Phi (u)) Phi ' (u) d u \
+    f(-x) = f(x) &=> integral^a_(-a) f(x) d x = 2 integral_0^a f(x) d x \
+    f(-x) = -f(x) &=> integral^a_(-a) f(x) d x = 0 \
+  $
+]
+
+=== Differentials / Integrals
+
+#form()[
+  #table(
+    columns: (1fr, 1fr),
+    table.header([*$F(x)$*], [*$F'(x) = f(x)$*]),
+    stroke: (x, y) => {
+      if y == 0 {
+        (bottom: 0.7pt + black)
+      }
+      if (x == 0) {
+        (right: 0.7pt + black)
+      }
+    },
+    $c$, $0$,
+    $x^a$, $a dot x^(a-1)$,
+    $1 / (a + 1) x^(a+1)$, $x^a$,
+    $1 / (a dot (n+1)) (a x + b)^(n+1)$, $(a x + b)^n$,
+    $(x^(alpha + 1)) / (alpha + 1)$, $x^alpha , space alpha != -1$,
+    $sqrt(x)$, $1 / (2 sqrt(x))$,
+    $root(n, x)$, $1 / n x^(1 / n - 1)$,
+    $2 / 3 x^(2 / 3)$, $sqrt(x)$,
+    $n / (n+1) x^(1 / n + 1)$, $root(n, x)$,
+    $e^x$, $e^x$,
+    $ln (|x|)$, $1 / x$,
+    $log_a (|x|)$, $1 / (x ln (a)) = log_a (e) 1 / x$,
+    $sin (x)$, $cos (x)$,
+    $cos (x)$, $- sin(x)$,
+    $tan (x)$, $1 / (cos^2 (x)) = 1 + tan^2 (x)$,
+    $cot (x)$, $1 / (- sin^2 (x))$,
+    $arcsin (x)$, $1 / sqrt(1 - x^2)$,
+    $arccos (x)$, $-1 / sqrt(1 - x^2)$,
+    $arctan (x)$, $1 / (1 + x^2)$,
+    $sinh (x)$, $cosh (x)$,
+    $cosh (x)$, $sinh (x)$,
+    $tanh (x)$, $1 / (cosh^2 (x)) = 1 - tanh^2 (x)$,
+    $"arcsinh" (x)$, $1 / sqrt(1+x^2)$,
+    $"arccosh" (x)$, $1 / sqrt(x^2 - 1)$,
+    $"arctanh" (x)$, $1 / (1-x^2)$,
+    $1 / f(x)$, $(- f' (x)) / ((f(x))^2)$,
+    $a^(c x)$, $a^(c x) dot c ln (a)$,
+    $x^x$, $x^x dot (1 + ln (x))_( x > 0)$,
+    $(x^x)^x$, $(x^x)^x (x + 2 x ln (x))_(x > 0)$,
+    $x^((x^x))$, $x^((x^x)) (&x^(x-1) + ln (x) dot &x^x (1 + ln (x))), space.quad x > 0$,
+    $1 / a ln (a x + b)$, $1 / (a x + b)$,
+    $(a x) / c - (a d - b c) / c^2 ln (| c x + d|)$, $(a x + b) / (c x + d)$,
+    $1 / (2 a) ln (| (x - a) / (x + a)|)$, $1 / (x^2 - a^2)$,
+    $x / 2 f(x) + a^2 / 2 ln (x + f(x))$, $sqrt(a^2 + x^2)$,
+    $x / 2 sqrt(a^2 - x^2) - a^2 / 2 arcsin (x / (|a|))$, $sqrt(a^2 - x^2)$,
+    $x / 2 f(x) - a^2 / 2 ln (x + f(x))$, $sqrt(x^2 - a^2)$,
+    $ln(x + sqrt(x^2 plus.minus a^2))$, $1 / sqrt(x^2 plus.minus a^2)$,
+    $arcsin (x / (|a|))$, $1 / sqrt(a^2 - x^2)$,
+    $1 / a arctan (x / a)$, $1 / (x^2 + a^2)$,
+    $- 1 / a cos (a x + b)$, $sin (a x + b)$,
+    $1 / a sin (a x + b)$, $cos (a x + b)$,
+    $- ln (|cos (x)|)$, $tan (x)$,
+    $ln(|sin (x)|)$, $cot (x)$,
+    $ln (| tan ( x / 2) |)$, $1 / (sin (x))$,
+    $ln (| tan (x / 2 + pi / 4) | )$, $1 / (cos (x))$,
+    $1 / 2 (x - sin (x) cos (x))$, $sin^2 (x)$,
+    $1 / 12 (cos (3 x) - 9 cos (x))$, $sin^3 (x)$,
+    $1 / 32 (12 x - 8 sin (2 x) + sin (4 x))$, $sin^4 (x)$,
+    $1 / 2 (x + sin (x) cos (x))$, $cos^2 (x)$,
+    $1 / 12 (9 sin (x) + sin (3 x))$, $cos^3 (x)$,
+    $1 / 32 (12 x + 8 sin (2 x) + sin (4 x))$, $cos^4 (x)$,
+    $tan (x)- x$, $tan^2 (x)$,
+    $- cot (x) - x$, $cot^2 (x)$,
+    $x arcsin (x) + sqrt(1 - x^2)$, $arcsin (x)$,
+    $x arccos (x) - sqrt(1 - x^2)$, $arccos (x)$,
+    $x arctan (x) - 1 / 2 ln (1 + x^2)$, $arctan (x)$,
+    $ln (cosh (x))$, $tanh (x)$,
+    $ln ( |f (x)|)$, $(f'(x)) / (f(x))$,
+    $x dot (ln (|x|) -1)$, $ln (|x|)$,
+    $1 / (n+1) (ln (x))^(n+1)_(n != -1)$, $1 / x (ln (x))^n$,
+    $1 / (2n) (ln (x^n))^2_(n != 0)$, $1 / x ln (x^n)$,
+    $ln (|ln (x) |)_(x > 0, x != 1)$, $1 / (x ln(x))$,
+    $1 / (b ln(a)) a^(b x)$, $a^(b x)$,
+    $(c x - 1) / (c^2) dot e^(c x)$, $x dot e^(c x)$,
+    $(x^(n + 1)) / (n + 1) (ln (x) - 1 / (n + 1))_(n != -1)$, $x^n ln(x)$,
+    $(e^(c x) (c sin (a x + b) - a cos (a x + b))) / (a^2 + c^2)$, $e^(c x) sin (a x + b)$,
+    $(e^(c x) (c cos (a x + b) + a sin (a x + b))) / (a^2 + c^2)$, $e^(c x) cos ( a x + b)$,
+    $(sin^(n+1) (x)) / (n+1)$, $sin^n (x) cos (x)$,
+    $- (cos^(n+1) (x)) / (n+1)$, $sin (x) cos^n (x)$,
+    $(4 x - sin (4 x)) / 32$, $sin^2 (x) cos^2 (x)$,
+    $(cos ( 6 x) - 9 cos (2 x)) / 192$, $sin^3 (x) cos^3 (x)$,
+    $(cos^3 (x) (3 cos (2 x) - 7)) / 30$, $sin^3 (x) cos^2 (x)$,
+    $(sin^3 (x) (3 sin (2 x) - 7)) / 30$, $sin^2 (x) cos^3 (x)$,
+  )
+]
+
+=== Binomial Formulas
+
+#form()[
+  $
+    (a + b)^2 &= a^2 + 2 a b + b^2 \
+    (a - b)^2 &= a^2 - 2 a b + b^2 \
+    (a + b) (a - b) &= a^2 - b^2
+  $
+]
+
+==== Pascal's Triangle
+
+// i wanted to do something fun. this was very fun indeed
+#form()[
+  #align(
+    center,
+    {
+      let r = 0
+      while r <= 6 {
+        let c = 0
+        while (c <= r) {
+          [$#calc.binom(r, c) space.quad$]
+          c += 1
+        }
+        [ \ ]
+        r += 1
+      }
+    },
+  )
+]
+
+=== Bijection, Injection and Surjection
+
+#form()[
+  / Injective: Every $x$ as a unique $y$
+  / Surjective: Every $y$ has a unique $x$
+  / Bijective: Injective and Surjective
+]
+
+=== Binomial Coefficient
+
+#form()[
+  $ vec(n, k) = (n!) / (k! (n - k)!) $
+]
+
+=== Constants
+
+#form()[
+  $
+    pi &= #calc.pi \
+    e &= #calc.e \
+    c &= 299792458 m / s
+  $
+]
+
+=== Partial Integration
+
+#form()[
+  Let $a lt b$ be real numbers and $f, g: [a, b] arrow.r RR$ be continuously differentiable. Then the following holds:
+
+  $
+    integral_a^b (f dot g') d x &= f dot g bar_a^b - integral_a^b (f' dot g) d x
+  $
+
+  For indefinite integrals:
+  $
+    integral (f dot g') d x &= f dot g - integral (f' dot g) d x
+  $
+
+  Useful if arc- or log-functions appear, $x^n$, $1 / (1 - x^2)$, $1 / (1 + x^2)$, $dots$
+
+]
+
+=== Substitution
+
+#form()[
+  Substitution is the inverse of the chain rule and is particularly useful when working with composite functions.
+
+  Let $a lt b$, $phi : [a, b] arrow.r RR$ be continuously differentiable, $I subset.eq RR$ an interval such that $phi ([a, b]) subset.eq I$, and $f : I arrow.r RR$ a continuous function. Then the following holds:
+  $
+    integral_a^b f (phi (t)) dot phi'(t) d t &= integral_(phi (a))^(phi (b)) f (x) d x
+  $
+
+  For indefinite integrals:
+  $
+    integral f (phi (t)) dot phi'(t) d t &= integral f (x) d x
+  $
+
+  Example:
+  $
+    integral x / sqrt(9 - x^2) d x " substitute " t = sqrt(9 - x^2)
+  $
+
+  1. Rewrite:
+  $
+    x = sqrt(9 - t^2) arrow.r.double x' = (-2t) / (2 sqrt(9 - t^2)) arrow.r.double d x = (-t dot d t) / sqrt(9 - t^2)
+  $
+
+  2. Substitution simplifies the integral:
+  $
+    integral - d t = -t " back substitution " arrow.r.double -sqrt(9 - x^2)
+  $
+]
+
+#show math.equation: set block(breakable: false)
 
 #page(columns: 1)[
   == Distributions
