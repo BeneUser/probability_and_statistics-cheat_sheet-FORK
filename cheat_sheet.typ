@@ -758,6 +758,56 @@
 
 = Confidence Intervals
 
+#def[
+  #align(center)[
+    $alpha in [0,1], space a,b: RR^n -> RR, space A = a(X_1, ..., X_n), space B = b(X_1, ..., X_n)$
+
+    *confidence interval* for $theta$ with confidence level $1 - alpha :=$
+
+    $ I = [A,B], space "such that for all" theta in Theta: PP_theta [A <= theta <= B] >= 1 - alpha $
+  ]
+]
+
+== Distribution Statements
+
+=== $cal(X)^2$
+
+#note[
+  #align(center)[
+    see distribution table below for more
+  ]
+]
+
+#def[
+  $ Gamma (v) = integral^infinity_0 t^(v-1) e^(-t) d t $
+  $ n in NN => Gamma (n) = (n-1)! $
+]
+
+#def[
+  $ X_1, ..., X_m "i.i.d" ~ cal(N)(0,1) => Y = sum^m_(i=1) X^2_i ~ cal(X)^2_m $
+]
+
+=== t
+
+#def[
+  $ X ~ N(0,1), space Y ~ cal(X)^2_m => Z := X / sqrt(Y / m) ~ t_m $
+]
+
+== Normal Model with Unknown Variance and Mean
+
+#def[
+  $ dash(X)_n = 1 / n sum^n_(i=1) X_i, space S^2 = 1 / (n-1) sum^n_(i=1) (X_i - dash(X)_n)^2 $
+  $ X_1, ..., X_n "i.i.d" ~ N(m, sigma^2) => dash(X)_n, space S^2 "independent" $
+]
+
+== Approximate Confidence Intervals
+
+#def[
+  #align(center)[
+    Often, estimator $T$ is a sum ($T = 1 / n sum^n_(i=1) Y_i$). One can use the CLT (for large $n$): $sum^n_(i=1) Y_i approx N(n EE[Y_i], n "Var"[Y_i])$
+  ]
+]
+
 = Tests
 
 #pagebreak()
@@ -782,7 +832,7 @@
       center + horizon,
       left + horizon,
     ),
-    inset: (x: 5pt, y: 7pt),
+    inset: (x: 5pt, y: 6pt),
     table.header(
       [Distribution],
       [Notation],
@@ -890,19 +940,19 @@
 
     [$cal(X)^2$],
     [$cal(X)^2_m$],
-    [$n$: Freedom Degree],
-    [$n$],
-    [$2n$],
-    [$1 / (2^(n / 2) Gamma (n / 2)) t^(n / 2 - 1) e^(- t / 2) "for" t > 0$],
-    [$P(n / 2, t / 2)$],
+    [$m$: Freedom Degree],
+    [$m$],
+    [$2m$],
+    [$1 / (2^(m / 2) Gamma (m / 2)) t^(m / 2 - 1) e^(- t / 2) "for" t >= 0$],
+    [$P(m / 2, t / 2)$],
     [goodness-of-fit, independence test, hypothesis testing],
 
     [Student's $t$],
     [$t_m$],
-    [$n$: Freedom Degree],
-    [$cases(0 space.quad &n > 1, "undef." space.quad &"otherwise")$],
-    [$cases(n / (n-2) space.quad &n > 2, infinity space.quad &1 < n <= 2, "undef." space.quad &"otherwise")$],
-    [$(Gamma ((n+1) / 2)) / (sqrt(n pi) Gamma (n / 2)) (1 + (t^2) / n)^(- (n+1) / 2)$],
+    [$m$: Freedom Degree],
+    [$cases(0 space.quad &m > 1, "undef." space.quad &"otherwise")$],
+    [$cases(m / (m-2) space.quad &m > 2, infinity space.quad &1 < m <= 2, "undef." space.quad &"otherwise")$],
+    [$(Gamma ((m+1) / 2)) / (sqrt(m pi) Gamma (m / 2)) (1 + (t^2) / m)^(- (m+1) / 2)$],
     [too complicated],
     [small samples, unknown variance, confidence intervals],
 
