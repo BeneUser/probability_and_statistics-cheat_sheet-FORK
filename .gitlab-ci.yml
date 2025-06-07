@@ -22,7 +22,7 @@ upload-comsol:
     - build
   script:
     - |
-      curl https://exams.vis.ethz.ch/api/document/dschwaiger/cheat-sheet-fs25/files/486/update/ \
+      curl https://exams.vis.ethz.ch/api/document/dschwaiger/cheatsheet-fs25/files/486/update/ \
         -H "Authorization: $TOKEN" \
         -F "file=@cheat_sheet.pdf" \
         -f
