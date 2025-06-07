@@ -810,6 +810,124 @@
 
 = Tests
 
+== Null and Alternative Hypotheses
+
+#def[
+  $ "Null Hypothesis" H_0: theta in Theta_0 $
+  $ "Alternative Hypothesis" H_A: theta in Theta_A $
+
+  #note[
+    $ Theta_0 inter Theta_A = emptyset, "often" Theta_A = Theta backslash Theta_0 $
+
+    #align(center)[
+      When $Theta_0$ or $Theta_A$ only have one value, they are called *simple*, else *composite*.
+
+      The statement we want to prove lies in $Theta_A$.
+    ]
+  ]
+]
+
+== Tests and Decisions
+
+#def[
+  #align(center)[
+    Test = pair $(T,K)$ where
+  ]
+  - $T$ a statistic, $T = t(X_1, ..., X_n)$
+  - $K subset RR$ a (deterministic) set, called *critical region*
+
+  #line()
+
+  $ T(omega) = t(x_1, ..., x_n) "(observed data)" $
+  $ cases("Reject" H_0 space.quad &"if" T(w) in K, "Do not reject" H_0 &"if" T(omega) in.not K) $
+]
+
+=== Errors
+
+#def[
+  / Type 1: $H_0$ rejected, but its true. Probability $PP_theta [T in K]$
+  / Type 2: $H_0$ not rejected, but is false. Probability $1 - PP_theta [T in K]$
+
+  #note[
+    #align(center)[Goal: Minimize Type 1 Error]
+  ]
+]
+
+== Significance Level and Power
+
+#def[
+  $ (T, K) "has significance level" alpha <=> forall theta in Theta_0: PP_theta [T in K] <= alpha $
+]
+
+#def[
+  $ "power of" (T,K) := beta: Omega_A -> [0,1], space theta |-> beta (theta) := PP_theta [T in K] $
+]
+
+#note[
+  1. Minimize Significance Level $=>$ Minimize Type 1 Error
+  2. Maximize Power $=>$ Minimize Type 2 Error
+]
+
+== Construction of Tests
+
+=== Likelihood Ratio
+
+#def[
+  $ R(x_1, ..., x_n) = (L(x_1, ..., x_n ; theta_A)) / (L(x_1, ..., x_n ; theta_0)) $
+
+  #note[
+    $ L(x_1, ..., x_n ; theta_0) = 0 => R(x_1, ..., x_n) = +infinity $
+
+    #align(center)[
+      If ration is large $=>$ observations are more likely under the alternative than the hypothesis
+    ]
+  ]
+]
+
+=== Likelihood Ratio Test
+
+#def[
+  $ (T,K) "with" T = R(X_1, ..., X_n), space K = (c, infinity), c >= 0 $
+
+  #note[
+    #align(center)[
+      Any other test with significance level no greater than the level of the likelihood ratio test will have *lower power* (i.e., a higher probability of a Type II error)
+    ]
+  ]
+]
+
+==== General
+
+#def[
+  $ R(x_1, ..., x_n) = (sup_(theta in Theta_A) L(x_1, ..., x_n ; theta)) / (sup_(theta in Theta_0) L(x_1, ..., x_n ; theta)) $
+
+  #note[
+    #align(center)[
+      for composite $Theta$'s
+    ]
+  ]
+]
+
+== p-value
+
+#def[
+  $ (T, (K_t)_(t>=0)) "ordered with respect to" T <=> \ forall s,t >= 0: s <= t => K_s supset K_t $
+]
+
+#def[
+  $
+    K_t = (t, infinity) "(right-tailed test)" \ K_t = (-infinity, -t) "(left-tailed test)" \ K_t = (-infinity, -t) union (t, infinity) "(two-sided test)"
+  $
+]
+
+#def[
+  $ "p-value" = G(t), space G: RR^+ -> [0,1], G(t) = PP_(theta_0) [T in K] $
+
+  #note[
+    The p-value informs us which tests in our family ${(T, K t ) : t >= 0}$ would lead to rejection of $H_0$ . In fact, if the observed p-value is $p$, then every test with significance level $alpha > p$ would reject $H_0$ and those with $alpha <= p$ would not.
+  ]
+]
+
 #pagebreak()
 
 = Formula Collection
