@@ -429,7 +429,9 @@
 ]
 
 #def[
-  $ X ~ cal(N)(0,1) #strong("standard normal") \ => Z = m + sigma dot.c X "normal, parameters:" m "and" sigma^2 $
+  $
+    X ~ cal(N)(0,1) #strong("standard normal") \ => Z = m + sigma dot.c X "normal, parameters:" m "and" sigma^2 \ Z -> X "(normalize Z):" (Z - m) / sqrt(sigma^2)
+  $
 ]
 
 #def[
