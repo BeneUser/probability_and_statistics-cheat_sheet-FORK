@@ -534,9 +534,9 @@
 
   #note[
     #columns(2)[
-      - $|EE[X| <= EE[|X|]$
+      - $|EE[X]| <= EE[|X|]$
       #colbreak()
-      - $EE[|X|] <= sqrt(EE[X^2])$
+      - $EE[ |X| ] <= sqrt(EE[X^2])$
     ]
   ]
 ]
