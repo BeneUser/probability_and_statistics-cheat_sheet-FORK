@@ -717,7 +717,10 @@
   #note[
     $ Z_n attach(approx, t: "Approx") Z "as" n -> infinity $
     $ EE[Z_n = 0] space.quad "and" space.quad "Var"(Z_n) = 1 $
-    $ lim_(n -> infinity) PP[n m - 2 sqrt(sigma^2 n) <= S_n <= m n + 2 sqrt(sigma^2 n)] = p tilde.eq 95% $
+    $
+      lim_(n -> infinity) PP[-1.96 <= (S_n - n m) / (sqrt(sigma^2 n)) <= 1.96] &= \
+      lim_(n -> infinity) PP[n m - 2 sqrt(sigma^2 n) <= S_n <= m n + 2 sqrt(sigma^2 n)] &= p tilde.eq 95%
+    $
   ]
 ]
 
