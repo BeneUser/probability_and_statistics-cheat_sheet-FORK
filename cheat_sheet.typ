@@ -776,9 +776,10 @@
   $ T_"ML" = t_"ML" (X_1, ..., X_n) $
 
   #note[
-    #align(center)[
-      find maximum = derivation is 0 \ use logarithm because it's easier to differentiate \ this also works for more dimensions
-    ]
+    + take the log of the MLE
+    + derivate on the parameters ($theta$)
+    + equal derivation to zero $...=0$ and solve for the parameters ($theta$)
+    + the resulting function is the $T_"ML"$
   ]
 ]
 
