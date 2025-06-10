@@ -1567,6 +1567,8 @@
   )
 ]
 
+// TODO: do we need this? shouldn't this be appended to the exam?
+// TODO: if so, remove this but insert the note at the end of the page somewhere
 #page(columns: 2)[
   == Standard Normal Table
 
