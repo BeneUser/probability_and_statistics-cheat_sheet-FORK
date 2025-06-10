@@ -2545,4 +2545,10 @@
     [$0.99997$],
     [$0.99997$],
   )
+
+  #note[
+    #align(center)[
+      If $X ~ N(mu, sigma^2)$, then $PP[X >= x] = PP[Z >= x] = Phi (x), space.quad Z = (X - mu) / sigma$
+    ]
+  ]
 ]
