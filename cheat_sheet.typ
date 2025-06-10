@@ -198,7 +198,7 @@
   + $PP[.|B]$ is a *probability measure* on $Omega$
   #align(center)[$B_1, ..., B_n$ a *partition*#footnote([$Omega = B_1 union ... union B_n$ and pairwise disjoint]) of $Omega$ with $PP[B_i] > 0$]
   + $forall A in F: PP[A] = sum^n_(i=1)PP[A|B_i]PP[B_i]$ (*Formula of total probability*)
-  + $PP[A>0] => PP[B_i | A ] = (PP[A|B_i]PP[B_i]) / (sum^n_(j=1)PP[A|B_j]PP[B_j])$ (*Bayes formula*)
+  + $PP[A>0] => PP[B_i | A ] = (PP[A|B_i]PP[B_i]) / (sum^n_(j=1)PP[A|B_j]PP[B_j]) = (PP[A|B_i]PP[B_i]) / PP[A]$ (*Bayes formula*)
 ]
 
 = Independence
