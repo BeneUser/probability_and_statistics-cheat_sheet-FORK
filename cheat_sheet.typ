@@ -1395,6 +1395,21 @@
   $
 ]
 
+=== Polar Coordinates
+
+#def[
+  #def[
+    + Replace all occurrences of $x$ and $y$ with their respective polar coordinates: $r = sqrt(x^2 + y^2)$, $x = r cos phi$, $y = r sin phi$
+    + Change the integration range to the corresponding values in the polar domain (using the conversion above)
+  ]
+
+  #note[
+    #align(center)[
+      Useful when integrating over circles (or even balls)
+    ]
+  ]
+]
+
 #show math.equation: set block(breakable: false)
 
 #page(columns: 1)[
