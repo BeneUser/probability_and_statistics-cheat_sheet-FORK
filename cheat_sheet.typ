@@ -720,6 +720,13 @@
   $ t(x_1, ..., x_n) = "estimate for observed data" x_1, ..., x_n "for" theta $
 ]
 
+== Consistency
+
+#def[
+  $ (T_n)_(n >= 0) "(weakly) consistent" <=> lim_(n -> infinity) T_n = theta $
+  $ (T_n)_(n >= 0) "(strongly) consistent" <=> PP[lim_(n -> infinity) T_n = theta] = 1 $
+]
+
 == Bias and Mean Squared Error
 
 #def[
