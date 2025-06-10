@@ -515,34 +515,6 @@
   $
 ]
 
-== Inequalities
-
-=== Monotonicity
-
-#def[
-  $ X <= Y "a.s." => EE[X] <= EE[Y] $
-]
-
-=== Markov
-
-#def[
-  $ X >= 0 => forall a > 0: PP[X>=a] <= (EE[X]) / a $
-]
-
-=== Jensen
-
-#def[
-  $ phi.alt "konvex" => phi.alt (EE[X]) <= EE[phi.alt (X)] $
-
-  #note[
-    #columns(2)[
-      - $|EE[X]| <= EE[|X|]$
-      #colbreak()
-      - $EE[ |X| ] <= sqrt(EE[X^2])$
-    ]
-  ]
-]
-
 = Variance
 
 #def[
@@ -578,6 +550,48 @@
 
 #def[
   $ X,Y "independent" <=> \ forall phi.alt, psi "piecewise continuous, bounded" "Cov"(phi.alt (X), psi (Y)) = 0 $
+]
+
+= Inequalities
+
+== Monotonicity
+
+#def[
+  $ X <= Y "a.s." => EE[X] <= EE[Y] $
+]
+
+== Markov
+
+#def[
+  $ X >= 0 => forall a > 0: PP[X>=a] <= (EE[X]) / a $
+]
+
+== Jensen
+
+#def[
+  $ phi.alt "konvex" => phi.alt (EE[X]) <= EE[phi.alt (X)] $
+
+  #note[
+    #columns(2)[
+      - $|EE[X]| <= EE[|X|]$
+      #colbreak()
+      - $EE[ |X| ] <= sqrt(EE[X^2])$
+    ]
+  ]
+]
+
+== Chebyshev
+
+#def[
+  $ PP[ |X - mu| >= k ] <= sigma^2 / k^2 $
+  $ sigma != 0, lambda > 0 => PP[ |X - mu | >= lambda sigma ] <= 1 / lambda^2 $
+]
+
+== Chernoff
+
+#def[
+  $ t > 0 => PP[X >= a] = PP[e^(t X) >= e^(t a)] <= EE[e^(t x)] / e^(t a) = EE[e^(t X - t a)] $
+  $ PP[X >= a] <= inf_(t > 0) (EE[e^(t X)]) / e^(t a) = inf_(t > 0) EE[e^(t X - t a)] $
 ]
 
 = Joint Distribution
