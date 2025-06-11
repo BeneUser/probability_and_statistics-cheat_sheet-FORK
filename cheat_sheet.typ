@@ -1340,18 +1340,24 @@
   )
 ]
 
+=== Binomial Coefficient
+
+#form()[
+  $ vec(n, k) = (n!) / (k! (n - k)!) $
+]
+
+=== Binomial theorem
+
+#form[
+  $ (x + y)^n = sum_(k=0)^n vec(n, k) x^(n-k)y^k = sum_(k=0)^n vec(n, k) x^k y^(n-k) $
+]
+
 === Bijection, Injection and Surjection
 
 #form()[
   / Injective: Every $x$ as a unique $y$
   / Surjective: Every $y$ has a unique $x$
   / Bijective: Injective and Surjective
-]
-
-=== Binomial Coefficient
-
-#form()[
-  $ vec(n, k) = (n!) / (k! (n - k)!) $
 ]
 
 === Constants
