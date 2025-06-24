@@ -1520,8 +1520,8 @@
     [$n in NN, m,r in {1,...,n}$],
     [$m r / n$],
     [$m r / n (1 - r / n) (n-m) / (n-1)$],
-    [$(vec(r, k)vec(n-r, m-k)) / vec(n, m)$],
-    [$sum^k_(y=0) (vec(r, y)vec(n-r, m-y)) / (vec(n, m))$],
+    [$(vec(r, x)vec(n-r, m-x)) / vec(n, m)$],
+    [$sum^x_(y=0) (vec(r, y)vec(n-r, m-y)) / (vec(n, m))$],
     [sampling without replacement, finite population],
 
     [Negative Binomial],
@@ -1529,7 +1529,7 @@
     [$r in NN, p in [0,1]$],
     [$r / p$],
     [$(r(1-p)) / (p^2)$],
-    [$vec(k-1, r-1) p^r (1-p)^(k-r)$],
+    [$vec(x-1, r-1) p^r (1-p)^(x-r)$],
     [too complicated],
     [count until $r$ successes, aggregated counts],
 
