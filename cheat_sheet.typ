@@ -1434,6 +1434,12 @@
   ]
 ]
 
+=== Sum Formula
+
+#def[
+  $ sum_(k=1)^(n) k = (n (n+1))/2 $
+]
+
 #show math.equation: set block(breakable: false)
 
 #page(columns: 1)[
