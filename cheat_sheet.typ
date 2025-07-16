@@ -926,6 +926,25 @@
   ]
 ]
 
+=== Moment Estimator
+
+#def[
+  $ "Moment estimator for" (EE[X], "Var"[X]): T = (T_1, T_2) $
+  $
+    T_1 = hat(mu) = dash(X)_n = 1 / n sum^n_(i=1) X_i
+  $
+  $
+    T_2 = hat(sigma)^2 = 1 / n sum^n_(i=1) (X_i - dash(X)_n)^2 = 1 / n sum^n_(i=1) X_i^2 - (dash(X)_n)^2
+  $
+
+  #note[
+    #align(center)[
+      It is not unbiased. Unbiased version is the *empirical sample variance* with $T'_2$ instead of $T_2$.
+      $ T'_2 = S^2 = n / (n-1) T_2 $
+    ]
+  ]
+]
+
 ==== General
 
 #def[
@@ -1437,7 +1456,7 @@
 === Sum Formula
 
 #def[
-  $ sum_(k=1)^(n) k = (n (n+1))/2 $
+  $ sum_(k=1)^(n) k = (n (n+1)) / 2 $
 ]
 
 #show math.equation: set block(breakable: false)
