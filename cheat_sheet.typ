@@ -1440,11 +1440,9 @@
 
 === Polar Coordinates
 
-#def[
-  #def[
-    + Replace all occurrences of $x$ and $y$ with their respective polar coordinates: $r = sqrt(x^2 + y^2)$, $x = r cos phi$, $y = r sin phi$
-    + Change the integration range to the corresponding values in the polar domain (using the conversion above)
-  ]
+#form[
+  + Replace all occurrences of $x$ and $y$ with their respective polar coordinates: $r = sqrt(x^2 + y^2)$, $x = r cos phi$, $y = r sin phi$
+  + Change the integration range to the corresponding values in the polar domain (using the conversion above)
 
   #note[
     #align(center)[
@@ -1455,7 +1453,7 @@
 
 === Sum Formula
 
-#def[
+#form[
   $ sum_(k=1)^(n) k = (n (n+1)) / 2 $
 ]
 
