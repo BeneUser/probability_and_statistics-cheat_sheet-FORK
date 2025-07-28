@@ -1567,8 +1567,8 @@
     [$[a,b]$: Interval],
     [$(a+b) / 2$],
     [$1 / 12 (b-a)^2$],
-    [$cases(1 / (b-a) space.quad &a <= x <= b, 0 space.quad &"otherwise")$],
-    [$cases(0 space.quad &x <= a, (t-a) / (b-a) space.quad &a < x < b, 1 space.quad &x >= b)$],
+    [$cases(1 / (b-a) space.quad &a <= t <= b, 0 space.quad &"otherwise")$],
+    [$cases(0 space.quad &t <= a, (t-a) / (b-a) space.quad &a < t < b, 1 space.quad &t >= b)$],
     [equal probability, continuous interval, random selection],
 
     [Exponential],
