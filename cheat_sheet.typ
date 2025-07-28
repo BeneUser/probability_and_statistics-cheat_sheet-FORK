@@ -558,6 +558,16 @@
   $ X,Y "independent" <=> \ forall phi.alt, psi "piecewise continuous, bounded" "Cov"(phi.alt (X), psi (Y)) = 0 $
 ]
 
+= Empirical Variance / Expectation
+
+#def[
+  $
+    #strong("Sample mean") &:= dash(X) = 1 / N sum^n_(i=1) X_i \
+    #strong("Biased Sample variance") &:= tilde(S)_X^2 = 1 / n sum^n_(i=1) (X_i - dash(X))^2 \
+    #strong("Unbiased Sample variance") &:= S^2 = 1 / (n-1) sum^n_(i=1) (X_i - dash(X))^2
+  $
+]
+
 = Inequalities
 
 == Monotonicity
