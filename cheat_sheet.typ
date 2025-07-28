@@ -438,6 +438,12 @@
   $ PP[| X - m | >= 3 sigma] <= 0.0027 $
 ]
 
+#note[
+  #align(center)[
+    If $X ~ N(mu, sigma^2)$, then $PP[X >= x] = PP[Z >= x] = Phi (x), space.quad Z = (X - mu) / sigma$
+  ]
+]
+
 = Expectation
 
 #def[
@@ -978,8 +984,6 @@
     The p-value informs us which tests in our family ${(T, K t ) : t >= 0}$ would lead to rejection of $H_0$ . In fact, if the observed p-value is $p$, then every test with significance level $alpha > p$ would reject $H_0$ and those with $alpha <= p$ would not.
   ]
 ]
-
-#pagebreak()
 
 = Formula Collection
 
@@ -1614,8 +1618,7 @@
   )
 ]
 
-// TODO: do we need this? shouldn't this be appended to the exam?
-// TODO: if so, remove this but insert the note at the end of the page somewhere
+/**
 #page(columns: 2)[
   == Standard Normal Table
 
@@ -2623,3 +2626,4 @@
     ]
   ]
 ]
+*/
