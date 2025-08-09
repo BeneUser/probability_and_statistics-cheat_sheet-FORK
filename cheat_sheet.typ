@@ -663,6 +663,10 @@
   $f, g$)
 ]
 
+#not_relevant[
+  $ f_(X|Y) (x|y) = (f (x,y)) / (f (y)) $
+]
+
 #def[
   $
     PP[X_1 <= a_1, ..., X_n <= a_n] = integral^(a_1)_(-infinity) dots.c integral^(a_n)_(-infinity) f(x_1, ..., x_n) d x_n dots.c d x_1
