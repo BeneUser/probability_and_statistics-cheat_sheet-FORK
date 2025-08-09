@@ -656,6 +656,13 @@
 
 === Joint Density
 
+#not_relevant[
+  $ f_((A,B)) (a,b) = 1 / (|det (J)|) f_X (x) f_Y (y) $
+
+  where $J$ is the Jacobian Matrix of the joint distribution Vector $(A = f (X,Y),B = g (X,Y))$ (for some 
+  $f, g$)
+]
+
 #def[
   $
     PP[X_1 <= a_1, ..., X_n <= a_n] = integral^(a_1)_(-infinity) dots.c integral^(a_n)_(-infinity) f(x_1, ..., x_n) d x_n dots.c d x_1
