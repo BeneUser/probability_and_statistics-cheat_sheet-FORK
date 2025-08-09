@@ -420,6 +420,12 @@
   $ PP[T > t + s | T > t] = e^(- lambda s) $
 ]
 
+==== Poisson
+
+#def[
+  $ X,Y "independent", space space X ~ P(lambda), Y ~ P(mu), space space lambda,mu > 0 \ => X + Y ~ P(lambda + mu) $
+]
+
 ==== Normal
 
 #def[
