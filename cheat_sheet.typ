@@ -432,16 +432,16 @@
   $
     X ~ cal(N)(0,1) #strong("standard normal") \ => Z = m + sigma dot.c X "normal, parameters:" m "and" sigma^2 \ Z -> X "(normalize Z):" (Z - m) / sqrt(sigma^2)
   $
+
+  #note[
+    #align(center)[
+      If $X ~ N(mu, sigma^2)$, then $PP[X <= c] = PP[Z <= (c - mu) / sigma] = Phi ((c - mu) / sigma), space.quad Z = (X - mu) / sigma ~ N(0,1)$
+    ]
+  ]
 ]
 
 #def[
-  $ PP[| X - m | >= 3 sigma] <= 0.0027 $
-]
-
-#note[
-  #align(center)[
-    If $X ~ N(mu, sigma^2)$, then $PP[X <= x] = PP[Z <= x] = Phi (x), space.quad Z = (X - mu) / sigma$
-  ]
+  $ PP[ |X - m| >= 3 sigma] <= 0.0027 $
 ]
 
 = Expectation
@@ -659,7 +659,7 @@
 #not_relevant[
   $ f_((A,B)) (a,b) = 1 / (|det (J)|) f_X (x) f_Y (y) $
 
-  where $J$ is the Jacobian Matrix of the joint distribution Vector $(A = f (X,Y),B = g (X,Y))$ (for some 
+  where $J$ is the Jacobian Matrix of the joint distribution Vector $(A = f (X,Y),B = g (X,Y))$ (for some
   $f, g$)
 ]
 
