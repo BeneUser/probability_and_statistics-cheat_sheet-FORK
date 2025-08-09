@@ -430,13 +430,17 @@
 
 #def[
   $
-    X ~ cal(N)(0,1) #strong("standard normal") \ => Z = m + sigma dot.c X "normal, parameters:" m "and" sigma^2 \ Z -> X "(normalize Z):" (Z - m) / sqrt(sigma^2)
+    Z ~ cal(N)(0,1) #strong("standard normal"), F_Z (z) = Phi (z) \ => X = m + sigma dot.c Z "normal, parameters:" m "and" sigma^2 \ X -> Z "(normalize X):" (X - m) / sqrt(sigma^2)
   $
 
   #note[
     #align(center)[
       If $X ~ N(mu, sigma^2)$, then $PP[X <= c] = PP[Z <= (c - mu) / sigma] = Phi ((c - mu) / sigma), space.quad Z = (X - mu) / sigma ~ N(0,1)$
     ]
+  ]
+
+  #note[
+    $ 1 - Phi (-x) = Phi (x) $
   ]
 ]
 
