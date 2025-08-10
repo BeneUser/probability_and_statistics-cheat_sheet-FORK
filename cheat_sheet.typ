@@ -1360,7 +1360,7 @@
     $(cos ( 6 x) - 9 cos (2 x)) / 192$, $sin^3 (x) cos^3 (x)$,
     $(cos^3 (x) (3 cos (2 x) - 7)) / 30$, $sin^3 (x) cos^2 (x)$,
     $(sin^3 (x) (3 sin (2 x) - 7)) / 30$, $sin^2 (x) cos^3 (x)$,
-    $1/c e^(c x)$, $e^(c x)$,
+    $1 / c e^(c x)$, $e^(c x)$,
   )
 ]
 
@@ -1496,6 +1496,7 @@
 #show math.equation: set block(breakable: false)
 
 #page(columns: 1)[
+  //#set text(size: 9pt)
   == Distributions
 
   // TABLE
@@ -1504,7 +1505,7 @@
   #show table.cell.where(y: 0): strong
 
   #table(
-    columns: (auto, auto, auto, auto, auto, auto, auto, 1fr),
+    columns: (auto, auto, auto, auto, auto, auto, auto, auto, auto),
     align: (
       left + horizon,
       left + horizon,
@@ -1513,9 +1514,10 @@
       center + horizon,
       center + horizon,
       center + horizon,
+      center + horizon,
       left + horizon,
     ),
-    inset: (x: 5pt, y: 6pt),
+    inset: (x: 2pt, y: 5pt),
     table.header(
       [Distribution],
       [Notation],
@@ -1524,10 +1526,11 @@
       [$"Var"(X)$],
       [$p_X(t) "/" f_X(t)$],
       [$F_X(t)$],
+      [MLE],
       [Use Case],
     ),
 
-    table.cell(colspan: 8, align: center + horizon)[Discrete Distributions],
+    table.cell(colspan: 9, align: center + horizon)[Discrete Distributions],
 
     [Equal Distribution],
     [unknown],
@@ -1536,6 +1539,7 @@
     [$1 / n sum^n_(i=1) x^2_i - 1 / (n^2) (sum^n_(i=1) x_i)^2$],
     [$1 / n$],
     [$(|{k:x_k <= t}|) / n$],
+    [$hat(N) = max(x_1, ..., x_n)$],
     [uniform discrete, equal chance, coin toss, dice],
 
     [Bernoulli],
@@ -1544,7 +1548,8 @@
     [$p$],
     [$p(1-p)$],
     [$p^t (1-p)^(1-t)$],
-    [$1-p "for" 0 <= t < 1$],
+    [$1-p, 0 <= t < 1$],
+    [$hat(p) = dash(x) \ dash(x) = 1 / n sum^n_(i=1) x_i$],
     [single trial, success/failure, coin flip],
 
     [Binomial],
@@ -1554,6 +1559,7 @@
     [$n p (1-p)$],
     [$vec(n, t) p^t (1-p)^(n-t)$],
     [$sum^t_(k=0) vec(n, k) p^k (1-p)^(n-k)$],
+    [$hat(p) = dash(x)$],
     [repeated trials, number of successes, binary outcomes],
 
     [Geometric],
@@ -1563,6 +1569,7 @@
     [$(1-p) / (p^2)$],
     [$p (1-p)^(t-1)$],
     [$1 - (1-p)^t$],
+    [$hat(p) = 1 / dash(x)$],
     [trials until first success, waiting time],
 
     [Poisson],
@@ -1572,6 +1579,7 @@
     [$lambda$],
     [$(lambda^t) / (t!) e^(- lambda)$],
     [$e^(- lambda) sum^t_(k=0) (lambda^k) / (k!)$],
+    [$hat(lambda) = dash(x)$],
     [rare events, fixed interval, error count],
 
     [Hypergeometric],
@@ -1581,6 +1589,7 @@
     [$m r / n (1 - r / n) (n-m) / (n-1)$],
     [$(vec(r, x)vec(n-r, m-x)) / vec(n, m)$],
     [$sum^x_(y=0) (vec(r, y)vec(n-r, m-y)) / (vec(n, m))$],
+    [-],
     [sampling without replacement, finite population],
 
     [Negative Binomial],
@@ -1590,9 +1599,10 @@
     [$(r(1-p)) / (p^2)$],
     [$vec(x-1, r-1) p^r (1-p)^(x-r)$],
     [too complicated],
+    [$hat(p) approx r / (r+ dash(x))$],
     [count until $r$ successes, aggregated counts],
 
-    table.cell(colspan: 8, align: center + horizon)[Continuous Distributions],
+    table.cell(colspan: 9, align: center + horizon)[Continuous Distributions],
 
     [Uniform],
     [$U ~ cal(U)([a,b])$],
@@ -1601,6 +1611,7 @@
     [$1 / 12 (b-a)^2$],
     [$cases(1 / (b-a) space.quad &a <= t <= b, 0 space.quad &"otherwise")$],
     [$cases(0 space.quad &t <= a, (t-a) / (b-a) space.quad &a < t < b, 1 space.quad &t >= b)$],
+    [$hat(a) = min(x_1, ..., x_n) \ hat(b) = max(x_1, ..., x_n)$],
     [equal probability, continuous interval, random selection],
 
     [Exponential],
@@ -1610,6 +1621,7 @@
     [$1 / (lambda^2)$],
     [$cases(lambda e^(- lambda t) space.quad &t >= 0, 0 space.quad &t < 0)$],
     [$cases(1 - e^(- lambda t) space.quad &t > 0, 0 space.quad &t <= 0)$],
+    [$hat(lambda) = 1 / dash(x)$],
     [time between events, memoryless, lifetimes],
 
     [Normal],
@@ -1619,6 +1631,7 @@
     [$sigma^2$],
     [$1 / (sqrt(2 pi sigma^2)) e^(- ((t - mu)^2) / (2 sigma^2))$],
     [$1 / (sigma sqrt(2 pi)) integral^t_(- infinity) e^(- 1 / 2 ((y - mu) / sigma)^2) d y$],
+    [$hat(mu) = dash(x) \ hat(sigma^2) = 1 / n sum^n_(i=1)(x_i - dash(x))^2$],
     [bell curve, natural variation, central limit],
 
     [$cal(X)^2$],
@@ -1626,8 +1639,9 @@
     [$m$: Freedom Degree],
     [$m$],
     [$2m$],
-    [$1 / (2^(m / 2) Gamma (m / 2)) t^(m / 2 - 1) e^(- t / 2) "for" t >= 0$],
+    [$1 / (2^(m / 2) Gamma (m / 2)) t^(m / 2 - 1) e^(- t / 2), t >= 0$],
     [$P(m / 2, t / 2)$],
+    [-],
     [goodness-of-fit, independence test, hypothesis testing],
 
     [Student's $t$],
@@ -1637,6 +1651,7 @@
     [$cases(m / (m-2) space.quad &m > 2, infinity space.quad &1 < m <= 2, "undef." space.quad &"otherwise")$],
     [$(Gamma ((m+1) / 2)) / (sqrt(m pi) Gamma (m / 2)) (1 + (t^2) / m)^(- (m+1) / 2)$],
     [too complicated],
+    [-],
     [small samples, unknown variance, confidence intervals],
 
     [Cauchy],
@@ -1646,6 +1661,7 @@
     [does not exist],
     [$1 / pi gamma / (gamma^2 + (x - x_0)^2)$],
     [$1 / 2 + 1 / pi arctan ((x - x_0) / gamma)$],
+    [-],
     [heavy tails, undefined mean/variance, physics/finance],
   )
 ]
