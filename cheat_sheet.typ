@@ -816,7 +816,7 @@
   $ T_"ML" = t_"ML" (X_1, ..., X_n) $
 
   #note[
-    + take the log of the MLE
+    + take the log of the Likelihood function
     + derivate on the parameters ($theta$)
     + equal derivation to zero $...=0$ and solve for the parameters ($theta$)
     + the resulting function is the $T_"ML"$
