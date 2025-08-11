@@ -963,6 +963,14 @@
   ]
 ]
 
+=== General Likelihood Ratio
+
+#def[
+  $
+    R(x_1, ..., x_n) = (sup_(theta in Theta_A) L(x_1, ..., x_n; theta)) / (sup_(theta in Theta_0) L(x_1, ..., x_n; theta))
+  $
+]
+
 === Moment Estimator
 
 #def[
