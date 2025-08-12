@@ -1119,7 +1119,7 @@
   $
     sin (alpha) = "opposite" / "hypotenuse" space.quad space.quad cos (alpha) = "adjacent" / "hypotenuse" \
     tan (alpha) = (sin (alpha)) / (cos (alpha)) = "opposite" / "adjacent" \
-    cot (alpha) = (1) / (sin (alpha)) = "hypotenuse" / "opposite" \
+    cot (alpha) = (1) / (tan (alpha)) = "adjacent" / "opposite" \
     sec (alpha) = (1) / (cos (alpha)) = "hypotenuse" / "adjacent" \
   $
 ]
